@@ -1,0 +1,60 @@
+*{
+	margin:0px;
+	padding: 0px;	
+}
+
+
+body{
+    background-color: #F5F5F5;
+}
+
+a{
+	color: #636363;
+	font-family: Tahoma;
+	font-size: 12px;
+}
+
+#lblusuario{
+	margin-right: 10px;
+	font-family: Tahoma;
+	font-weight: bold;
+	font-size: 12px;
+	color: #636363;
+}
+
+#lblsenha{
+	font-family: Tahoma;
+	font-weight: bold;
+	font-size: 12px;
+	margin-right: 10px;
+	color: #636363;
+}
+
+#btnlogar{
+	width: 130px;
+	height: 35px;
+    color: #fff;
+	background-color: #636363;
+	border-radius: 5px;
+    cursor: pointer;
+}
+
+#txtusuario{
+	margin-right: 10px;
+	width: 300px;
+	height: 30px;
+	border-radius: 5px;
+}
+
+#txtsenha{
+	margin-right: 10px;
+	width: 300px;
+	height: 30px;
+	border-radius: 5px;
+}
+
+#Container{
+	margin-top: 20%;
+	margin-right: 40px;
+	float: right;
+}

@@ -1,0 +1,41 @@
+/* 
+    Created on : 14/07/2023, 08:20:08
+    Author     : DataRowInfo>
+*/
+
+#codigoagente{
+    width: 120px;
+}
+
+#descricaoagente{
+    width: 300px;
+}
+
+
+#caracterizacaoagente{
+    width: 400px;
+}
+
+#tipocad{
+    width: 100px;
+}
+
+#LimparCadAgente{
+    float:right;
+    margin-top: 5px;
+    width: 100px;
+    height: 35px;
+}
+
+#SalvarCadAgente{
+    margin-top: 5px;
+    padding:0;
+    width: 100px;
+    height: 35px;
+}
+
+#iconCadAgente{
+    padding: 9px;
+}
+
+
