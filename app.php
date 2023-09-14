@@ -74,7 +74,7 @@ require_once("Connection/conexao.php");
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Estrutura PCMSO:</h6>
                         <a class="collapse-item" href="Programas/Ocupacional/View/setor.php">Setor e função</a>
-                        <a class="collapse-item" href="buttons.html">CBO</a>
+                        <a class="collapse-item" href="Programas/Ocupacional/View/cbo.php">CBO</a>
                         <a class="collapse-item" href="buttons.html">Configuração</a>
                         <a class="collapse-item" href="Programas/Ocupacional/View/todos_riscos.php">Riscos e agentes</a>
                         <a class="collapse-item" href="buttons.html">Exames</a>
