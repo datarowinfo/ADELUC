@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
     <head>
         
@@ -12,18 +12,18 @@
         <title></title>
 
         <!-- Custom fonts for this template -->
-        <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+        <link href="../../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
         <link
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
             rel="stylesheet">
 
         <!-- Custom styles for this template -->
-        <link href="css/sb-admin-2.min.css" rel="stylesheet">
-        <link href="Style/StyleCadastroSetor.css" rel="stylesheet">
+        <link href="../../../css/sb-admin-2.min.css" rel="stylesheet">
+        <link href="../Style/StyleCadastroSetor.css" rel="stylesheet">
 
         <!-- Custom styles for this page -->
-        <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-        <meta http-equiv="refresh" content="2; URL='http://localhost/HOMOLOG/setor.php'"/>
+        <link href="../../../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+        <meta http-equiv="refresh" content="2; URL='http://localhost/DTR-ADELUC/Programas/Ocupacional/View/setor.php'"/>
 
     </head>
 
@@ -38,9 +38,9 @@
                 <!-- Sidebar - Brand -->
                 <a class="sidebar-brand d-flex align-items-center justify-content-center" href="app.php">
                     <div class="sidebar-brand-icon rotate-n-20">
-                        <i><img src="Image/Logo.png"/></i>
+                        <i><img src="../../../Image/Logo.png"/></i>
                     </div>
-                    <div class="sidebar-brand-text mx-2"><i><img src="Image/LogoCab.png"/></i></div>
+                    <div class="sidebar-brand-text mx-2"><i><img src="../../../Image/LogoCab.png"/></i></div>
                 </a>
 
                 <!-- Divider -->
@@ -283,7 +283,7 @@
 
                                             <?php
                                             ini_set('default_charset', 'utf-8');
-                                            require_once("Connection/conexao.php");
+                                            require_once("../../../Connection/conexao.php");
 
                                             $result_setor = "SELECT * FROM adeluc.tb_hierarquia WHERE tipo = 'SET'";
                                             $resultado_setor = mysqli_query($con, $result_setor);
@@ -304,7 +304,7 @@
                                                                 id="<?php echo $rows_setor['descricao']; ?>">
                                                             <svg class="bi d-block mx-auto mb-1" 
                                                                  width="10" height="10" fill="currentColor">
-                                                            <use xlink:href="fonts/bootstrap-icons.svg#pencil-fill"/>
+                                                            <use xlink:href="../../../fonts/bootstrap-icons.svg#pencil-fill"/>
                                                             </svg></button>
                                                     </td>
 
@@ -374,21 +374,21 @@
         </div>
 
         <!-- Bootstrap core JavaScript-->
-        <script src="vendor/jquery/jquery.min.js"></script>
-        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="../../../vendor/jquery/jquery.min.js"></script>
+        <script src="../../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
         <!-- Core plugin JavaScript-->
-        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="../../../vendor/jquery-easing/jquery.easing.min.js"></script>
 
         <!-- Custom scripts for all pages-->
-        <script src="js/sb-admin-2.min.js"></script>
+        <script src="../../../js/sb-admin-2.min.js"></script>
 
         <!-- Page level plugins -->
-        <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-        <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+        <script src="../../../vendor/datatables/jquery.dataTables.min.js"></script>
+        <script src="../../../vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
         <!-- Page level custom scripts -->
-        <script src="js/demo/datatables-demo.js"></script>
+        <script src="../../../js/demo/datatables-demo.js"></script>
 
     </body>
 

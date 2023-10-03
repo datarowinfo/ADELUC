@@ -1,0 +1,49 @@
+/* 
+    Created on : 14/07/2023, 08:20:08
+    Author     : DataRowInfo>
+*/
+#descricao{
+    width: 400px;
+}
+
+#usuario{
+    width: 200px;
+}
+
+#email{
+    width: 400px;
+}
+
+#password{
+    width: 200px;
+}
+
+#observacao{
+    width: 400px;
+}
+
+#permissao{
+    width: 200px;
+}
+
+#LimparCadUsuario{
+    float:right;
+    margin-right: 5px;
+    margin-top: 5px;
+    width: 100px;
+    height: 35px;
+}
+
+#SalvarCadUsuario{
+    float:right;
+    margin-top: 5px;
+    padding:0;
+    width: 100px;
+    height: 35px;
+}
+
+#iconCadUsuario{
+    padding: 9px;
+}
+
+

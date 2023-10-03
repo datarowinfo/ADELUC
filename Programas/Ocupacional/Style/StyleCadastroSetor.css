@@ -6,17 +6,37 @@
     width: 300px;
 }
 
+#recipient-descricao{
+    width: 500px;
+}
+
 #caracterizacaosetor{
     width: 420px;
 }
 
+#recipient-caracterizacao{
+    width: 500px;
+}
+
 #LimparCadSetor{
+    float:right;
     margin-top: 5px;
     width: 100px;
     height: 35px;
 }
 
 #SalvarCadSetor{
+    float:right;
+    margin-left: 5px;
+    margin-top: 5px;
+    padding:0;
+    width: 100px;
+    height: 35px;
+}
+
+#EditCadSetor{
+    float:right;
+    margin-left: 5px;
     margin-top: 5px;
     padding:0;
     width: 100px;
@@ -25,6 +45,10 @@
 
 #iconCadSetor{
     padding: 9px;
+}
+
+#margin{
+    margin-top:15px;
 }
 
 

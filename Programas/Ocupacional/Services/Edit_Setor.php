@@ -1,6 +1,6 @@
 <?php
 
-require_once("Connection/conexao.php");
+require_once("../../../Connection/conexao.php");
 session_start();
 
 $descricao = $_POST['descricao'];
@@ -19,7 +19,7 @@ switch($acao){
 			echo("Ocorreu um erro durante a inserção na tabela!");
 		} else 
 		{
-		header("location:setor_.php");	
+		header("location:../View/setor_.php");	
  		}
  	break;
 
