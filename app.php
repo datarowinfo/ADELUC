@@ -27,7 +27,7 @@ require_once("Connection/conexao.php");
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
-    <link href="Style_Sessao.css" rel="stylesheet">
+    <link href="Style/Style_Sessao.css" rel="stylesheet">
 
 </head>
 
@@ -199,6 +199,23 @@ require_once("Connection/conexao.php");
             </li>
 
             <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+            
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#suporte"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Suporte</span>
+                </a>
+                <div id="suporte" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">CHAMADOS:</h6>
+                        <a class="collapse-item" href="suporte.php">Abrir chamado</a>
+                        <a class="collapse-item" href="cards.html">Cards</a>
+                        
+            </li>
+            
             <hr class="sidebar-divider d-none d-md-block">
 
             <!-- Sidebar Toggler (Sidebar) -->

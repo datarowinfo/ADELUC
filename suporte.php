@@ -1,11 +1,10 @@
 <?php
-require_once("../../../Connection/conexao.php");
+require_once("Connection/conexao.php");
 
-  // A sessão precisa ser iniciada em cada página diferente
-  if (!isset($_SESSION)) session_start();
-
-
-  ?>
+// A sessão precisa ser iniciada em cada página diferente
+if (!isset($_SESSION))
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -20,17 +19,17 @@ require_once("../../../Connection/conexao.php");
         <title></title>
 
         <!-- Custom fonts for this template -->
-        <link href="../../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+        <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
         <link
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
             rel="stylesheet">
 
         <!-- Custom styles for this template -->
-        <link href="../../../css/sb-admin-2.min.css" rel="stylesheet">
-        <link href="../Style/StyleCadastroRiscos.css" rel="stylesheet">
+        <link href="css/sb-admin-2.min.css" rel="stylesheet">
+        <link href="Style/StyleSuporte.css" rel="stylesheet">
 
         <!-- Custom styles for this page -->
-        <link href="../../../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+        <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
     </head>
 
@@ -43,11 +42,11 @@ require_once("../../../Connection/conexao.php");
             <ul class="navbar-nav bg-dark sidebar sidebar-dark accordion" id="accordionSidebar">
 
                 <!-- Sidebar - Brand -->
-                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../../../app.php">
+                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="app.php">
                     <div class="sidebar-brand-icon rotate-n-20">
-                        <i><img src="../../../Image/Logo.png"/></i>
+                        <i><img src="Image/Logo.png"/></i>
                     </div>
-                    <div class="sidebar-brand-text mx-2"><i><img src="../../../Image/LogoCab.png"/></i></div>
+                    <div class="sidebar-brand-text mx-2"><i><img src="Image/LogoCab.png"/></i></div>
                 </a>
 
                 <!-- Divider -->
@@ -55,7 +54,7 @@ require_once("../../../Connection/conexao.php");
 
                 <!-- Nav Item - Dashboard -->
                 <li class="nav-item">
-                    <a class="nav-link" href="../../../index.php">
+                    <a class="nav-link" href="index.php">
                         <i class="fas fa-fw fa-tachometer-alt"></i>
                         <span>Inicio</span></a>
                 </li>
@@ -65,7 +64,7 @@ require_once("../../../Connection/conexao.php");
 
                 <!-- Heading -->
                 <div class="sidebar-heading">
-                    Estrutura de PCMSO
+                    Suporte
                 </div>
 
                 <!-- Nav Item - Pages Collapse Menu -->
@@ -73,12 +72,12 @@ require_once("../../../Connection/conexao.php");
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                        aria-expanded="true" aria-controls="collapseTwo">
                         <i class="fas fa-fw fa-cog"></i>
-                        <span>Riscos e agentes</span>
+                        <span>Chamados</span>
                     </a>
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <h6 class="collapse-header">Agentes de risco</h6>
-                            <a class="collapse-item active border-left-dark" href="riscos_ACI.php">Cadastro e consulta</a>
+                            <h6 class="collapse-header">Registro chamados</h6>
+                            <a class="collapse-item active border-left-dark" href="suporte.php">Chamados</a>
 
                         </div>
                     </div>
@@ -110,7 +109,6 @@ require_once("../../../Connection/conexao.php");
                                 <i class="fa fa-bars"></i>
                             </button>
                         </form>
-
 
                         <!-- Topbar Navbar -->
                         <ul class="navbar-nav ml-auto bg-dark">
@@ -162,14 +160,12 @@ require_once("../../../Connection/conexao.php");
                                         <div>
                                             <div class="small text-gray-500">DataRowInfo 14, Julho de 2023</div>
                                             <span class="font-weight-bold"><p>DTRADELUC17072023</p></span>
-                                         
+
                                         </div>
                                     </a>
 
                                 </div>
                             </li>
-
-
 
                             <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -179,7 +175,7 @@ require_once("../../../Connection/conexao.php");
                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <span class="mr-2 d-none d-lg-inline text-light small"><?php echo $_SESSION['UsuarioNome']; ?></span>
                                     <img class="img-profile rounded-circle"
-                                         src="../../../img/undraw_profile.svg">
+                                         src="img/undraw_profile.svg">
                                 </a>
                                 <!-- Dropdown - User Information -->
                                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -201,60 +197,139 @@ require_once("../../../Connection/conexao.php");
 
                     </nav>
 
-
                     <div class="card bg-gray-400 border-0">
-                        <div class="card-header bg-gray-400 border-gray-300">
-                            <ul class="nav nav-tabs card-header-tabs ">
-                                <li class="nav-item">
-                                    <a class="nav-link active border-bottom-dark" href="todos_riscos.php">Todos os riscos</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="riscos_ACI.php">Risco acidente</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="riscos_BIO.php">Risco biológico</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="riscos_ERG">Risco ergonômico</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="riscos_FIS">Risco físico</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="riscos_QUI">Risco químico</a>
-                                </li>
-                            </ul>
-                        </div>
-
-
 
                         <!-- End of Topbar -->
                         <div class="py-2 container-fluid bg-gray-400">
 
                             <!-- DataTales Example -->
                             <div class="card shadow mb-4 bg-gray-400 border-0" >
-
                                 <div class="card-header py-3 bg-dark">
-                                    <h6 class="m-0 font-weight-bold text-light bg-dark">Agentes de riscos cadastrados</h6>
+                                    <h6 class="m-0 font-weight-bold text-light bg-dark">Registro de chamados</h6>
                                 </div>
+
                                 <div class="card-body bg-gray-300">
+
+                                    <div class="modal fade" id="cadastrochamado" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                         aria-hidden="true">
+                                        <div class="modal-dialog modal-lg" role="document">
+                                            <div class="modal-content   bg-light">
+                                                <div class="modal-header bg-dark">
+                                                    <h5 class="modal-title text-white" id="exampleModalLabel">Abrir chamado</h5>
+                                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">×</span>
+                                                    </button>
+                                                </div>
+
+                                                <div class="container-fluid bg-gray-400">
+                                                    <div class="card shadow m-4">
+
+                                                        <div class="card-body bg-gray-300">
+                                                            <p>
+                                                            <form class="bg-gray-300 text-dark" method="POST" action="Salvar_chamado.php">
+                                                                <table>
+                                                                    <tr>
+
+                                                                        <td>
+                                                                            Descrição: <input id="descricaochamado" type="text" class="form-control form-control-sm" name="descricao">
+                                                                        </td>
+
+                                                                        <td>
+                                                                            Prioridade: 
+                                                                            <select id="permissao" class="form-control form-control-sm">
+                                                                                <option name="prioridade" value="1">Baixa</option>;
+                                                                                <option name="prioridade"value="2">Média</option>;
+                                                                                <option name="prioridade"value="3">Alta</option>;
+
+                                                                            </select>
+                                                                        </td>
+
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td colspan="2">
+                                                                            Especificação: <textarea id="especificacaochamado" type="text" class="form-control form-control-sm" name="especificacao"></textarea>
+                                                                        </td>
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td>
+                                                                            <input id="descricaochamado" type="text" class="form-control form-control-sm" name="descricao" disabled>
+                                                                        </td>
+                                                                        <td>
+                                                                            <button id="Anexar" class="btn btn-primary btn-icon-split aling-right" name="Anexo" value="2">
+                                                                                <span id="iconChamado" class="icon text-white-50 fas fa-paperclip" ></span>
+                                                                                <span class="text">Anexar</span>
+                                                                            </button>
+                                                                        </td>
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td>
+                                                                            Observação: <input id="obschamado" type="text" class="form-control form-control-sm" name="obschamado">
+                                                                        </td>
+
+
+                                                                        <td>
+                                                                            Tipo: <input id="tipochamado" type="text" name="tipo" value = "Chamado" disabled class="form-control form-control-sm">
+                                                                        </td>
+
+                                                                    <tr>
+
+                                                                        <td colspan = "2">
+
+                                                                            <button id="SalvarChamado" class="btn btn-primary btn-icon-split aling-right" name="Subject" value="1">
+                                                                                <span id="iconChamado" class="icon text-white-50 fas fa-save">
+                                                                                </span>
+                                                                                <span class="text">Salvar</span>
+                                                                            </button>
+
+                                                                            <button id="FecharChamado" class="btn btn-secondary btn-icon-split aling-right" name="Subject" value="2">
+                                                                                <span id="iconChamado" class="icon text-white-50 fas fa-trash">
+                                                                                </span>
+                                                                                <span class="text">Fechar</span>
+                                                                            </button>
+
+                                                                        </td>
+
+                                                                    </tr>
+
+                                                                </table>
+
+                                                            </form>
+                                                            </p>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <button type="button" class="btn btn-primary view_data text-white" 
+                                            href="#" data-toggle="modal" data-target="#cadastrochamado">Abrir chamado</button>
+                                    <br><br>
+
                                     <div class="table-responsive bg-gray-300 text-dark">
+
                                         <table class="table table-striped table-hover table-sm text-dark" id="dataTable" width="100%" cellspacing="0">
                                             <thead class="thead-dark" >
                                                 <tr>
-                                                    <th>AÇÕES</th>
-                                                    <th>GRUPO</th>
-                                                    <th>ESOCIAL</th>
-                                                    <th>AGENTE</th>		  
+                                                    <th id="acao">Ação</th>
+                                                    <th>Numero</th>
+                                                    <th>Descricao</th>
+                                                    <th>Data</th>
+                                                    <th>Prioridade</th>
                                                 </tr>
                                             </thead>
 
                                             <tbody>
 
                                                 <?php
-                                                require_once("../../../Connection/conexao.php");
+                                                require_once("Connection/conexao.php");
 
-                                                $result_setor = "SELECT * FROM ADELUC.agentesriscos WHERE  ativo = '1'";
+                                                $result_setor = "SELECT * FROM ADELUC.tb_chamados";
                                                 $resultado_setor = mysqli_query($con, $result_setor);
                                                 while ($rows_setor = mysqli_fetch_array($resultado_setor)) {
                                                     ?>
@@ -263,18 +338,24 @@ require_once("../../../Connection/conexao.php");
                                                         <td>
 
                                                             <button type="button" class="btn btn-dark view_data text-white" 
-                                                                    id="<?php echo $rows_setor['agente']; ?>">
+                                                                    id="<?php echo $rows_setor['id_chamado']; ?>">
                                                                 <svg class="bi d-block mx-auto mb-1" width="10" height="10" fill="currentColor">
-                                                                <use xlink:href="../../../fonts/bootstrap-icons.svg#pencil-fill"/></svg></button></td>
+                                                                <use xlink:href="fonts/bootstrap-icons.svg#pencil-fill"/></svg></button>
 
-                                                        <th><?php echo $rows_setor['cod_familia']; ?></th>
-                                                        <th><?php echo $rows_setor['cod_esocial']; ?></th>
-                                                        <td><?php echo $rows_setor['agente']; ?></td>
+                                                            <button type="button" class="btn btn-dark view_data text-white" 
+                                                                    id="<?php echo $rows_setor['id_chamado']; ?>">
+                                                                <svg class="bi d-block mx-auto mb-1" width="10" height="10" fill="currentColor">
+                                                                <use xlink:href="fonts/bootstrap-icons.svg#search"/></svg></button>
+                                                        </td>
+
+                                                        <th><?php echo $rows_setor['numero']; ?></th>
+                                                        <th><?php echo $rows_setor['descricao']; ?></th>
+                                                        <td><?php echo $rows_setor['datainclusao']; ?></td>
+                                                        <td><?php echo $rows_setor['prioridade']; ?></td>
                                                     </tr>
                                                     <?php
                                                 }
                                                 ?>
-
                                             </tbody>
                                         </table>
                                     </div>
@@ -283,12 +364,7 @@ require_once("../../../Connection/conexao.php");
 
                         </div>
                         <!-- /.container-fluid -->
-
                     </div>
-
-
-
-
                 </div>
                 <!-- End of Main Content -->
 
@@ -315,42 +391,42 @@ require_once("../../../Connection/conexao.php");
 
         <!-- Logout Modal-->
         <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content   bg-dark">
-                <div class="modal-header">
-                    <h5 class="modal-title text-white" id="exampleModalLabel">Pronto para sair?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body text-white">Selecione "Logout" para finalizar a sua sessão!</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login/logout.php">Logout</a>
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content   bg-dark">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-white" id="exampleModalLabel">Pronto para sair?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body text-white">Selecione "Logout" para finalizar a sua sessão!</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <a class="btn btn-primary" href="login/logout.php">Logout</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-        </div>
 
-        <!-- Bootstrap core JavaScript-->
-        <script src="../../../vendor/jquery/jquery.min.js"></script>
-        <script src="../../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-        <!-- Core plugin JavaScript-->
-        <script src="../../../vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-        <!-- Custom scripts for all pages-->
-        <script src="../../../js/sb-admin-2.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
 
-        <!-- Page level plugins -->
-        <script src="../../../vendor/datatables/jquery.dataTables.min.js"></script>
-        <script src="../../../vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <!-- Page level plugins -->
+    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-        <!-- Page level custom scripts -->
-        <script src="../../../js/demo/datatables-demo.js"></script>
+    <!-- Page level custom scripts -->
+    <script src="js/demo/datatables-demo.js"></script>
 
-    </body>
+</body>
 
 </html>

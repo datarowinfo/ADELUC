@@ -7,35 +7,50 @@
     width: 120px;
 }
 
-#descricaoagente{
-    width: 300px;
+#descricaochamado{
+    width: 480px;
 }
 
 
-#caracterizacaoagente{
-    width: 400px;
-}
 
-#tipocad{
+#tipochamado{
     width: 100px;
 }
 
-#LimparCadAgente{
+#FecharChamado{
     float:right;
-    margin-top: 5px;
+    margin-top: 20px;
+    margin-right: 5px;
     width: 100px;
     height: 35px;
 }
 
-#SalvarCadAgente{
-    margin-top: 5px;
+#SalvarChamado{
+    float:right;
+    margin-top: 20px;
     padding:0;
     width: 100px;
     height: 35px;
 }
 
-#iconCadAgente{
+#Anexar{
+    margin-top: 2px;
+    padding:0;
+    width: 100px;
+    height: 35px;
+}
+
+#iconChamado{
     padding: 9px;
+}
+
+#acao{
+    width: 90px;
+}
+
+#especificacaochamado{
+     width: 600px;
+     height: 170px;
 }
 
 

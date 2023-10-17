@@ -1,18 +1,21 @@
 <?php
 
-require_once("../../../Connection/conexao.php");
+require_once("Connection/conexao.php");
 session_start();
 
+
 $descricao = $_POST['descricao'];
-$caracterizacao = $_POST['caracterizacao'];
-$tipo = "SET";
-$status = $_POST['status'];
-$criado = $_SESSION['UsuarioNome'];
+$especificacao = $_POST['especificacao'];
+$prioridade = $_POST['prioridade'];
+$tipo = "tipo";
+$status = 'A';
+$obs = $_POST['obschamado'];
+$criado = $_SESSION['Usuarioinclusao'];
 $acao = $_POST['Subject'];
 
 switch($acao){
 	case "1":
-		$sql = ("INSERT INTO ADELUC.tb_hierarquia (descricao, caracterizacao, tipo, ativo, datacriacao, usuariocriacao) VALUES (UPPER('$descricao'), UPPER('$caracterizacao'),'$tipo','$status',SYSDATE(),'$criado')");
+		$sql = ("INSERT INTO ADELUC.tb_chamados (descricao, especificacao, tipo, prioridade, status, tipo, datainclusao, usuarioinclusao, obs) VALUES (UPPER('$descricao'), UPPER('$especificacao'),'$tipo','$status',SYSDATE(),'$criado', '$obs')");
 		$result = mysqli_query($con, $sql);
 
 		if(!$result) {

@@ -333,8 +333,10 @@ require_once("../../../Connection/conexao.php");
                                                                 class="dropdown-item" data-toggle="modal" data-target="#EditSetor" 
                                                                 data-whatever="<?php echo $rows_setor['id_hierarquia']; ?>" 
                                                                 data-whateverdescricao="<?php echo $rows_setor['descricao']; ?>"
-                                                                data-whatevercaracterizacao="<?php echo $rows_setor['caracterizacao']; ?>"
-                                                                <?php echo $status; ?>>
+                                                                data-whatevercaracterizacao="<?php echo $rows_setor['ativo']; ?>"
+                                                                data-whateverstatus1="<?php echo $rows_setor['ativo']; ?>"
+                                                                data-whateverstatus0="<?php echo $rows_setor['ativo']; ?>">
+                                                            
                                                             <svg class="bi d-block mx-auto mb-1" 
                                                                  width="10" height="10" fill="currentColor">
                                                             <use xlink:href="../../../fonts/bootstrap-icons.svg#pencil-fill"/>
@@ -452,9 +454,9 @@ require_once("../../../Connection/conexao.php");
 
                                         <tr>
                                             <td colspan = "2">
-                                                <label for="recipient-status" class="control-label">Situação:</label>
-                                                <input id="recipient-status" style="margin-left: 10px" type="radio" name="status" value="1"<?php $status == 'ATIVO' ? 'checked' : '' ?>  >Ativo
-                                                <input id="recipient-status" style="margin-left: 10px" type="radio" name="status" value="0"<?php $status == 'DESATIVADO' ? 'checked' : ''?>  >Desativado
+                                                <label for="recipient-status" class="control-label"><?php echo $rows_setor['ativo']; ?></label>
+                                                <input id="recipient-status1" style="margin-left: 10px" type="radio" name="status">Ativo
+                                                <input id="recipient-status0" style="margin-left: 10px" type="radio" name="status"><?php echo $rows_setor['ativo']; ?>Desativado
                                             </td><!-- comment -->
                                         </tr>
                                         
@@ -471,16 +473,12 @@ require_once("../../../Connection/conexao.php");
                                             </td>
 
                                         </tr>
-
-
                                     </table>
                                 </form>
                                 </p>
-
                             </div>
                         </div>
                     </div>
-                
             </div>
         </div>
     </div>
@@ -508,6 +506,9 @@ require_once("../../../Connection/conexao.php");
 		  var recipient = button.data('whatever'); // Extract info from data-* attributes
 		  var recipientdescricao = button.data('whateverdescricao');
 		  var recipientcaracterizacao = button.data('whatevercaracterizacao');
+                  var recipientstatus = button.data('whateverstatus0');
+                  
+                 
                   
 		  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
 		  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
@@ -516,11 +517,11 @@ require_once("../../../Connection/conexao.php");
 		  modal.find('#id_hierarquia').val(recipient);
 		  modal.find('#recipient-descricao').val(recipientdescricao);
 		  modal.find('#recipient-caracterizacao').val(recipientcaracterizacao);
+                 
+                   modal.find('#recipient-status0').val(recipientstatus);
                   
-		  
+                 
 		});
 	</script>
-
     </body>
-
 </html>
