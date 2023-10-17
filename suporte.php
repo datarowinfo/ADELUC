@@ -31,6 +31,7 @@ if (!isset($_SESSION))
         <!-- Custom styles for this page -->
         <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+        <!--Teste-->
     </head>
 
     <body id="page-top">
@@ -66,6 +67,7 @@ if (!isset($_SESSION))
                 <div class="sidebar-heading">
                     Suporte
                 </div>
+
 
                 <!-- Nav Item - Pages Collapse Menu -->
                 <li class="nav-item">
