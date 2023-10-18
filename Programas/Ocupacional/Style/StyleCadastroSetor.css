@@ -25,6 +25,13 @@
     height: 35px;
 }
 
+#NovoCadSetor{
+    float:right;
+    margin-top: 5px;
+    width: 162px;
+    height: 35px;
+}
+
 #SalvarCadSetor{
     float:right;
     margin-left: 5px;

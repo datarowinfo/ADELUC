@@ -238,7 +238,7 @@ if (!isset($_SESSION))
 
                                                                         <td>
                                                                             Prioridade: 
-                                                                            <select id="permissao" class="form-control form-control-sm">
+                                                                            <select id="permissao" name="prioridade" class="form-control form-control-sm">
                                                                                 <option name="prioridade" value="1">Baixa</option>;
                                                                                 <option name="prioridade"value="2">Média</option>;
                                                                                 <option name="prioridade"value="3">Alta</option>;
@@ -259,7 +259,7 @@ if (!isset($_SESSION))
                                                                             <input id="descricaochamado" type="text" class="form-control form-control-sm" name="descricao" disabled>
                                                                         </td>
                                                                         <td>
-                                                                            <button id="Anexar" class="btn btn-primary btn-icon-split aling-right" name="Anexo" value="2">
+                                                                            <button id="Anexar" class="btn btn-primary btn-icon-split aling-right" name="Anexo" value="3">
                                                                                 <span id="iconChamado" class="icon text-white-50 fas fa-paperclip" ></span>
                                                                                 <span class="text">Anexar</span>
                                                                             </button>
@@ -273,7 +273,7 @@ if (!isset($_SESSION))
 
 
                                                                         <td>
-                                                                            Tipo: <input id="tipochamado" type="text" name="tipo" value = "Chamado" disabled class="form-control form-control-sm">
+                                                                            Tipo: <input id="tipochamado" type="text" value = "Chamado" disabled class="form-control form-control-sm ">
                                                                         </td>
 
                                                                     <tr>

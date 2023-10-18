@@ -7,9 +7,11 @@ require_once("../../../Connection/conexao.php");
   
   ?>
 <?php
-    require_once("../../../Connection/conexao.php");
+    
     
     if(!empty($_GET['id_hierarquia'])){
+        
+        include_once("../../../Connection/conexao.php");
         
         $id = $_GET['id_hierarquia'];
         
@@ -26,7 +28,7 @@ require_once("../../../Connection/conexao.php");
                 $criado = $_SESSION['UsuarioNome'];
                 
             }
-           
+           print_r($descricao);
         }
         else{
             
@@ -234,7 +236,7 @@ require_once("../../../Connection/conexao.php");
                     <div class="container-fluid bg-gray-400">
                         <div class="card shadow mb-4">
                             <div class="card-header py-3 bg-dark">
-                                <h6 class="m-0 font-weight-bold text-light">Cadastro de setor</h6>
+                                <h6 class="m-0 font-weight-bold text-light">Editando setor</h6>
                             </div>
                             <div class="card-body bg-gray-300">
                                 <p>
@@ -262,21 +264,24 @@ require_once("../../../Connection/conexao.php");
                                                 <input style="margin-left: 10px" type="radio" name="status" value="0"> Desativado
                                             </td><!-- comment -->
 
+                                            <td></td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td colspan = "2"></td>
                                             <td>
-                                                <button id="SalvarCadSetor" class="btn btn-secondary btn-icon-split aling-right" name="Subject" value="1">
+                                                <button id="SalvarCadSetor" class="btn btn-primary btn-icon-split aling-right" name="Subject" value="1">
                                                     <span id="iconCadSetor" class="icon text-white-50 fas fa-save">
                                                     </span>
                                                     <span class="text">Salvar</span>
                                                 </button>
 
-                                                <button id="LimparCadSetor" class="btn btn-secondary btn-icon-split aling-right" name="Subject" value="2">
+                                                <a href="setor.php" id="NovoCadSetor" class="btn btn-secondary btn-icon-split aling-right">
                                                     <span id="iconCadSetor" class="icon text-white-50 fas fa-trash">
                                                     </span>
-                                                    <span class="text">Limpar</span>
-                                                </button>
-
+                                                    <span class="text"><?php echo "Novo cadastro" ?></span>
+                                                </a>
                                             </td>
-
                                         </tr>
 
 
@@ -325,11 +330,10 @@ require_once("../../../Connection/conexao.php");
                                                 } else {
                                                     $status = 'DESATIVADO';
                                                 }
-                                               
-
-                                               echo "<tr>";
+                                                
+                                                echo "<tr>";
                                                     echo"<td>
-                                                        <a class='btn btn-dark view_data text-white' href='Editar_Setor.php?$rows_setor[id_hierarquia];'>
+                                                        <a class='btn btn-dark text-white' href='Editar_Setor.php?$rows_setor[id_hierarquia];'>
                                                             
                                                             <svg class='bi d-block mx-auto mb-1' 
                                                                  width='10' height='10' fill='currentColor'>
@@ -401,82 +405,7 @@ require_once("../../../Connection/conexao.php");
             </div>
         </div>
     </div>
-        
-        <!-- Editar Setor Modal-->
-        <div class="modal fade bd-example-modal-lg" id="EditSetor" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content   bg-dark">
-                <div class="modal-header">
-                    
-                    <h5 class="modal-title text-white" id="exampleModalLabel">Editar - cadastro de setor</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                
-                <!-- End of Topbar -->
-                    <div class="container-fluid bg-gray-400">
-                        <div class="card shadow m-3">
-                           
-                            <div class="card-body bg-gray-400">
-                                <p>
-                                <form class="text-dark" method="POST" action="../Services/Edit_Setor">
-                                    <table>
-                                        <tr>
-                                            
-                                            <td>
-                                                <label for="recipient-descricao" class="control-label">Descrição do setor:</label> 
-                                                <input id="recipient-descricao" type="text" class="form-control form-control-sm"  name="descricao">
-                                            </td>
-
-                                            <td>
-                                                <label>Tipo:</label>
-                                                <input type="text" name="tipo" value = "SET" disabled class="form-control form-control-sm">
-                                            </td>
-
-                                        </tr>
-                                        
-                                        <tr>
-                                            
-                                            <td colspan = "2">
-                                                <label for="recipient-caracterizacao" class="control-label">Caracterização:</label>
-                                                <input id="recipient-caracterizacao" type="text" class="form-control form-control-sm" name="caracterizacao">
-                                            </td>
-
-                                        </tr>
-
-                                        <tr>
-                                            <td colspan = "2">
-                                                <label for="recipient-status" class="control-label"><?php echo $rows_setor['ativo']; ?></label>
-                                                <input id="recipient-status1" style="margin-left: 10px" type="radio" name="status">Ativo
-                                                <input id="recipient-status0" style="margin-left: 10px" type="radio" name="status"><?php echo $rows_setor['ativo']; ?>Desativado
-                                            </td><!-- comment -->
-                                        </tr>
-                                        
-                                        <tr>
-                                            <td colspan = "2">
-                                                <button id="EditCadSetor" class="btn btn-dark btn-icon-split aling-right" name="Subject" value="1">
-                                                    <span id="iconCadSetor" class="icon text-white-50 fas fa-save">
-                                                    </span>
-                                                    <span class="text">Salvar</span>
-                                                </button>
-                                                
-                                                <input name="id_hierarquia" type="hidden" class="form-control" id="id_hierarquia" value="">
-
-                                            </td>
-
-                                        </tr>
-                                    </table>
-                                </form>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-            </div>
-        </div>
-    </div>
-
+     
         <!-- Bootstrap core JavaScript-->
         <script src="../../../vendor/jquery/jquery.min.js"></script>
         <script src="../../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

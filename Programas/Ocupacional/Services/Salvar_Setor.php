@@ -27,4 +27,5 @@ switch($acao){
 		echo "Case 2: Desenvolvendo!";
 	break;
 }
+
 ?>

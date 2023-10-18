@@ -7,22 +7,22 @@ session_start();
 $descricao = $_POST['descricao'];
 $especificacao = $_POST['especificacao'];
 $prioridade = $_POST['prioridade'];
-$tipo = "tipo";
 $status = 'A';
+$tipo = "1";
+$criado = $_SESSION['UsuarioNome'];
 $obs = $_POST['obschamado'];
-$criado = $_SESSION['Usuarioinclusao'];
 $acao = $_POST['Subject'];
 
-switch($acao){
+      switch($acao){
 	case "1":
-		$sql = ("INSERT INTO ADELUC.tb_chamados (descricao, especificacao, tipo, prioridade, status, tipo, datainclusao, usuarioinclusao, obs) VALUES (UPPER('$descricao'), UPPER('$especificacao'),'$tipo','$status',SYSDATE(),'$criado', '$obs')");
+		$sql = ("INSERT INTO ADELUC.tb_chamados (descricao, especificacao, prioridade,  status, tipo, datainclusao, usuarioinclusao, obs) VALUES (UPPER('$descricao'), UPPER('$especificacao'), '$prioridade', '$status', '$tipo', SYSDATE(), '$criado', '$obs')");
 		$result = mysqli_query($con, $sql);
 
 		if(!$result) {
 			echo("Ocorreu um erro durante a inserção na tabela!");
 		} else 
 		{
-		header("location:../View/setor_.php");	
+		header("location:suporte.php");	
  		}
  	break;
 
@@ -30,4 +30,6 @@ switch($acao){
 		echo "Case 2: Desenvolvendo!";
 	break;
 }
+
+
 ?>
