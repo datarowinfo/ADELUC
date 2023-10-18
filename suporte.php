@@ -179,7 +179,7 @@ if (!isset($_SESSION))
                                     <img class="img-profile rounded-circle"
                                          src="img/undraw_profile.svg">
                                 </a>
-                                <!-- Dropdown - User Information -->
+                                <!-- Dropdown - User Information Teste -->
                                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                      aria-labelledby="userDropdown">
 
