@@ -1,41 +1,35 @@
 <?php
-require_once("../../../Connection/conexao.php");
+include_once("../../../Connection/conexao.php");
+session_start();
+
+if(!empty($_GET['id_hierarquia']))
+{
 
   // A sessão precisa ser iniciada em cada página diferente
-  if (!isset($_SESSION)) session_start();
 
   
-  ?>
-<?php
-    require_once("../../../Connection/conexao.php");
+
+    $id = $_GET = ['id_hierarquia'];
     
-    if(!empty($_GET['id_hierarquia'])){
-        
-        $id = $_GET['id_hierarquia'];
-        
-        $sqlSelect = "SELECT * from tb_hierarquia WHERE id_hierarquia=$id";
-        $result = $conexao->query($sqlSelect);
-        
-        if($result->num_rows > 0){
-            while($user_data = mysqli_fetch_assoc($result)){
-                
-                $descricao = $user_data['descricao'];
-                $caracterizacao = $user_data['caracterizacao'];
-                $tipo = "SET";
-                $status = $user_data['status'];
-                $criado = $_SESSION['UsuarioNome'];
-                
-            }
-           
-        }
-        else{
+    $sqlSelect = "SELECT * adeluc.tb_hierarquia FROM WHERE id_hierarquia = '$id'";
+    $result = $con->query($sqlSelect);
+    
+    if($result->num_rows > 0)
+    {
+        while($setor_data = mysqli_fetch_assoc($result))
+        {
+            $descricao = $setor_data['descricao'];
             
         }
-        
-        
-    } ?>
 
-
+    }
+    else
+    {
+        
+    }
+}    
+   
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -337,7 +331,7 @@ require_once("../../../Connection/conexao.php");
                                                             </svg></a>
                                                     </td>";
                                                         
-                                                         ?>
+                                            ?>
 
                                                     <td><?php echo $rows_setor['id_hierarquia']; ?></td>
                                                     <td><?php echo $rows_setor['descricao']; ?></td>
@@ -414,65 +408,6 @@ require_once("../../../Connection/conexao.php");
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                
-                <!-- End of Topbar -->
-                    <div class="container-fluid bg-gray-400">
-                        <div class="card shadow m-3">
-                           
-                            <div class="card-body bg-gray-400">
-                                <p>
-                                <form class="text-dark" method="POST" action="../Services/Edit_Setor">
-                                    <table>
-                                        <tr>
-                                            
-                                            <td>
-                                                <label for="recipient-descricao" class="control-label">Descrição do setor:</label> 
-                                                <input id="recipient-descricao" type="text" class="form-control form-control-sm"  name="descricao">
-                                            </td>
-
-                                            <td>
-                                                <label>Tipo:</label>
-                                                <input type="text" name="tipo" value = "SET" disabled class="form-control form-control-sm">
-                                            </td>
-
-                                        </tr>
-                                        
-                                        <tr>
-                                            
-                                            <td colspan = "2">
-                                                <label for="recipient-caracterizacao" class="control-label">Caracterização:</label>
-                                                <input id="recipient-caracterizacao" type="text" class="form-control form-control-sm" name="caracterizacao">
-                                            </td>
-
-                                        </tr>
-
-                                        <tr>
-                                            <td colspan = "2">
-                                                <label for="recipient-status" class="control-label"><?php echo $rows_setor['ativo']; ?></label>
-                                                <input id="recipient-status1" style="margin-left: 10px" type="radio" name="status">Ativo
-                                                <input id="recipient-status0" style="margin-left: 10px" type="radio" name="status"><?php echo $rows_setor['ativo']; ?>Desativado
-                                            </td><!-- comment -->
-                                        </tr>
-                                        
-                                        <tr>
-                                            <td colspan = "2">
-                                                <button id="EditCadSetor" class="btn btn-dark btn-icon-split aling-right" name="Subject" value="1">
-                                                    <span id="iconCadSetor" class="icon text-white-50 fas fa-save">
-                                                    </span>
-                                                    <span class="text">Salvar</span>
-                                                </button>
-                                                
-                                                <input name="id_hierarquia" type="hidden" class="form-control" id="id_hierarquia" value="">
-
-                                            </td>
-
-                                        </tr>
-                                    </table>
-                                </form>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
             </div>
         </div>
     </div>

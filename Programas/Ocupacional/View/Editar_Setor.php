@@ -1,43 +1,35 @@
 <?php
-require_once("../../../Connection/conexao.php");
+include_once("../../../Connection/conexao.php");
+session_start();
+
+if(!empty($_GET['id_hierarquia']))
+{
 
   // A sessão precisa ser iniciada em cada página diferente
-  if (!isset($_SESSION)) session_start();
 
   
-  ?>
-<?php
+
+    $id = $_GET = ['id_hierarquia'];
     
+    $sqlSelect = "SELECT * adeluc.tb_hierarquia FROM WHERE id_hierarquia = '$id'";
+    $result = $con->query($sqlSelect);
     
-    if(!empty($_GET['id_hierarquia'])){
-        
-        include_once("../../../Connection/conexao.php");
-        
-        $id = $_GET['id_hierarquia'];
-        
-        $sqlSelect = "SELECT * from tb_hierarquia WHERE id_hierarquia=$id";
-        $result = $conexao->query($sqlSelect);
-        
-        if($result->num_rows > 0){
-            while($user_data = mysqli_fetch_assoc($result)){
-                
-                $descricao = $user_data['descricao'];
-                $caracterizacao = $user_data['caracterizacao'];
-                $tipo = "SET";
-                $status = $user_data['status'];
-                $criado = $_SESSION['UsuarioNome'];
-                
-            }
-           print_r($descricao);
-        }
-        else{
+    if($result->num_rows > 0)
+    {
+        while($setor_data = mysqli_fetch_assoc($result))
+        {
+            $descricao = $setor_data['descricao'];
             
         }
-        
-        
-    } ?>
 
-
+    }
+    else
+    {
+        echo "Algo saiu errado!";
+    }
+}    
+   
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -245,7 +237,8 @@ require_once("../../../Connection/conexao.php");
                                         <tr>
 
                                             <td>
-                                                Descrição do setor: <input id="descricaosetor" type="text" class="form-control form-control-sm" name="descricao">
+                                                <input type="hidden" name="id" value="<?php echo $descricao; ?>">
+                                                Descrição do setor: <input id="descricaosetor" type="text" class="form-control form-control-sm" name="descricao" value="<?php  echo $descricao;?>">
                                             </td>
 
                                             <td>
@@ -332,14 +325,14 @@ require_once("../../../Connection/conexao.php");
                                                 }
                                                 
                                                 echo "<tr>";
-                                                    echo"<td>
-                                                        <a class='btn btn-dark text-white' href='Editar_Setor.php?$rows_setor[id_hierarquia];'>
-                                                            
+                                                    echo"<td>";
+                                                    echo "<a class='btn btn-dark text-white' href='Editar_Setor.php?id=" . $rows_setor['id_hierarquia'] ."'>
+                                                   
                                                             <svg class='bi d-block mx-auto mb-1' 
                                                                  width='10' height='10' fill='currentColor'>
                                                             <use xlink:href='../../../fonts/bootstrap-icons.svg#pencil-fill'/>
-                                                            </svg></a>
-                                                    </td>";
+                                                            </svg></a>";
+                                                    echo"</td>";
                                                         
                                                          ?>
 
