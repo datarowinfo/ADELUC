@@ -1,34 +1,10 @@
 <?php
-include_once("../../../Connection/conexao.php");
 session_start();
-
-if(!empty($_GET['id_hierarquia']))
-{
-
-  // A sessão precisa ser iniciada em cada página diferente
-
-  
-
-    $id = $_GET = ['id_hierarquia'];
-    
-    $sqlSelect = "SELECT * adeluc.tb_hierarquia FROM WHERE id_hierarquia = '$id'";
-    $result = $con->query($sqlSelect);
-    
-    if($result->num_rows > 0)
-    {
-        while($setor_data = mysqli_fetch_assoc($result))
-        {
-            $descricao = $setor_data['descricao'];
-            
-        }
-
-    }
-    else
-    {
-        echo "Algo saiu errado!";
-    }
-}    
-   
+include_once("../../../connection/conexao.php");
+$id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+$result_usuario = "SELECT * FROM adeluc.tb_hierarquia WHERE id_hierarquia = '$id'";
+$resultado_usuario = mysqli_query($con, $result_usuario);
+$row_usuario = mysqli_fetch_assoc($resultado_usuario);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -232,17 +208,17 @@ if(!empty($_GET['id_hierarquia']))
                             </div>
                             <div class="card-body bg-gray-300">
                                 <p>
-                                <form class="bg-gray-300 text-dark" method="POST" action="../Services/Salvar_Setor.php">
+                                <form class="bg-gray-300 text-dark" method="POST" action="../Services/Edit_Setor.php">
                                     <table>
                                         <tr>
 
                                             <td>
-                                                <input type="hidden" name="id" value="<?php echo $descricao; ?>">
-                                                Descrição do setor: <input id="descricaosetor" type="text" class="form-control form-control-sm" name="descricao" value="<?php  echo $descricao;?>">
+                                                <input type="hidden" name="id" value="<?php echo $row_usuario['id_hierarquia']; ?>">
+                                                Descrição do setor: <input id="descricaosetor" type="text" class="form-control form-control-sm" name="descricao" value="<?php echo $row_usuario['descricao']; ?>">
                                             </td>
 
                                             <td>
-                                                Caracterização: <input id="caracterizacaosetor" type="text" class="form-control form-control-sm" name="caracterizacao">
+                                                Caracterização: <input id="caracterizacaosetor" type="text" class="form-control form-control-sm" name="caracterizacao" value="<?php echo $row_usuario['caracterizacao']; ?>">
                                             </td>
 
                                             <td>

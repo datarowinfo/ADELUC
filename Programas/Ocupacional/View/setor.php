@@ -16,7 +16,7 @@ if(!empty($_GET['id_hierarquia']))
     
     if($result->num_rows > 0)
     {
-        while($setor_data = mysqli_fetch_assoc($result))
+        while($setor_data = mysqli_fetch_array($result))
         {
             $descricao = $setor_data['descricao'];
             
@@ -283,74 +283,61 @@ if(!empty($_GET['id_hierarquia']))
                     </div>
 
 
-                    <!-- Begin Page Content -->
-                    <div class="container-fluid bg-gray-400">
-
-                        <!-- DataTales Example -->
-                        <div class="card shadow mb-4" >
-                           
-                            <div class="card-body bg-gray-300">
-                                <div class="table-responsive bg-gray-300 text-dark">
-                                    <table class="table table-striped table-hover table-sm text-dark" id="dataTable" width="100%" cellspacing="0">
-                                        <thead class="thead-dark" >
-                                            <tr>
-                                                <th>Ação</th>
-                                                <th>Cód.Setor</th>
-                                                <th>Setor</th>
-                                                <th>Caracterização</th>
-                                                <th>Situação</th>
-                                            </tr>
-                                        </thead>
-
-                                        <tbody>
-
-                                            <?php
-                                            ini_set('default_charset', 'utf-8');
-                                            require_once("../../../Connection/conexao.php");
-
-                                            $result_setor = "SELECT * FROM adeluc.tb_hierarquia WHERE tipo = 'SET'";
-                                            $resultado_setor = mysqli_query($con, $result_setor);
-                                            while ($rows_setor = mysqli_fetch_array($resultado_setor)) {
-                                                
-                                                $auxStatus = $rows_setor['ativo'];
+                   <?php
+                    if(isset($_SESSION['msg'])){
+                            echo $_SESSION['msg'];
+                            unset($_SESSION['msg']);
+                    }
+		
+                    $result_usuarios = "SELECT * FROM adeluc.tb_hierarquia WHERE tipo = 'SET'";
+                    $resultado_usuarios = mysqli_query($con, $result_usuarios);
+                    
+                echo"<div class='container-fluid bg-gray-400'>"
+                      ."<div class='card shadow mb-4' >"
+                        ."<div class='card-body bg-gray-300'>"
+                            ."<div class='table-responsive bg-gray-300 text-dark'>"
+                                ."<table class='table table-striped table-hover table-sm text-dark' id='dataTable' width='100%' cellspacing='0'>"
+                                    ."<thead class='thead-dark'>"
+                                    .     "<tr>"
+                                    .       "<th>Ação</th>"
+                                    .       "<th>Cód.Setor</th>"
+                                    .       "<th>Setor</th>"
+                                    .       "<th>Caracterização</th>"
+                                    .       "<th>Situação</th>"
+                                    .     "</tr>"
+                                    . "</thead>"
+                                    ."<tbody>";
+                    ini_set('default_charset', 'utf-8');
+                    while($row_usuario = mysqli_fetch_assoc($resultado_usuarios)){
+                        
+                          $auxStatus = $row_usuario['ativo'];
                                                 
                                                 if ($auxStatus == 1) {
                                                     $status = 'ATIVO';
                                                 } else {
                                                     $status = 'DESATIVADO';
                                                 }
-                                               
 
-                                               echo "<tr>";
-                                                    echo"<td>
-                                                        <a class='btn btn-dark view_data text-white' href='Editar_Setor.php?$rows_setor[id_hierarquia];'>
-                                                            
-                                                            <svg class='bi d-block mx-auto mb-1' 
+                                    echo "<tr>"
+                                    .       "<td>"
+                                            . "<a class='btn btn-dark view_data text-white' href='Editar_Setor.php?id=" . $row_usuario['id_hierarquia'] . "'>
+                                                <svg class='bi d-block mx-auto mb-1' 
                                                                  width='10' height='10' fill='currentColor'>
                                                             <use xlink:href='../../../fonts/bootstrap-icons.svg#pencil-fill'/>
-                                                            </svg></a>
-                                                    </td>";
-                                                        
-                                            ?>
-
-                                                    <td><?php echo $rows_setor['id_hierarquia']; ?></td>
-                                                    <td><?php echo $rows_setor['descricao']; ?></td>
-                                                    <td><?php echo $rows_setor['caracterizacao']; ?></td>
-                                                    <td><?php echo $status; ?></td>
-
-                                                </tr>
-                                                <?php
-                                            }
-                                            ?>
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <!-- /.container-fluid -->
+                                                            </svg></a></td>"
+                                    .       "<td>".$row_usuario['id_hierarquia']."</td>"
+                                    .       "<td>".$row_usuario['descricao']."</td>"
+                                    .       "<td>".$row_usuario['caracterizacao']."</td>"
+                                    .       "<td>".$status."</td>"
+                                    . "</tr>";
+                    }
+                                echo"</tbody>"
+                                ."</table>"
+                             ."</div>"
+                          ."</div>"
+                        ."</div>"
+                    ."</div>"
+		?>
 
                 </div>
                 <!-- End of Main Content -->
