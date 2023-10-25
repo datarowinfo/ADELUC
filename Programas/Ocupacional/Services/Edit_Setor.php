@@ -24,11 +24,17 @@ if(isset($_POST['Subject']))
                         $resultado_usuario = mysqli_query($con, $result_usuario); 
                         
                         if(mysqli_affected_rows($con)){
-                                
-                                header("Location: ../View/setor_Edit.php");
+                                $_SESSION['msg'] =  "<div class='container'><div class='alert alert-success alert-dismissible fade show' role='alert'>
+                                         Usuário editado com <strong>sucesso!</strong>
+                                         <button type='button' class='close' data-dismiss='alert' aria-label='close'>
+                                         <span aria-hidden='true'>&times;</span></button></div></div>";
+                                header("Location: ../View/setor.php");
                         }else{
-                                $_SESSION['msg'] = "<p style='color:red;'>Usuário não foi editado com sucesso</p>";
-                                header("Location: ../View/setor_Edit.php?id=$id");
+                                $_SESSION['msg'] =  "<div class='container'><div class='alert alert-danger alert-dismissible fade show' role='alert'>
+                                         Usuário não editado. Verificar <strong>conteúdo!</strong>
+                                         <button type='button' class='close' data-dismiss='alert' aria-label='close'>
+                                         <span aria-hidden='true'>&times;</span></button></div></div>";
+                                header("Location: ../View/setor.php");
                         }
                         
                         break;

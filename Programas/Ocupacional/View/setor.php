@@ -281,13 +281,14 @@ if(!empty($_GET['id_hierarquia']))
 
 
                    <?php
-                    if(isset($_SESSION['msg'])){
+                  if(isset($_SESSION['msg'])){
                             echo $_SESSION['msg'];
                             unset($_SESSION['msg']);
                     }
+                    
 		
-                    $result_usuarios = "SELECT * FROM adeluc.tb_hierarquia WHERE tipo = 'SET'";
-                    $resultado_usuarios = mysqli_query($con, $result_usuarios);
+                $result_usuarios = "SELECT * FROM adeluc.tb_hierarquia WHERE tipo = 'SET'";
+                $resultado_usuarios = mysqli_query($con, $result_usuarios);
                     
                 echo"<div class='container-fluid bg-gray-400'>"
                       ."<div class='card shadow mb-4' >"

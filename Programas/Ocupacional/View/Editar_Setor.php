@@ -244,23 +244,23 @@ $row_usuario = mysqli_fetch_assoc($resultado_usuario);
                                         <tr>
                                             <td colspan = "2"></td>
                                             <td>
-                                                <button id="SalvarCadSetor" class="btn btn-primary btn-icon-split" name="Subject" value="1">
-                                                    <span id="iconCadSetor" class="icon text-white-50 fas fa-save">
-                                                    </span>
-                                                    <span class="text">Salvar</span>
+                                                <button id="SalvarCadSetor" class="btn btn-primary" 
+                                                   type="submit" name="Subject" value="1">
+                                                    <span id="iconCadSetor" class="icon fa fa-save">
+                                                    </span> 
                                                 </button>
                                                 
-                                                <a id="ExcluirCadSetor" href="setor.php" id="SairSetor" class="btn btn-danger btn-icon-split" name="Subject" value="2">
-                                                    <span id="iconCadSetor" class="icon text-white-50 fas fa-trash">
-                                                    </span>
-                                                    <span class="text"><?php echo "Excluir" ?></span>
-                                                </a>
+                                                <button id="ExcluirCadSetor" class="btn btn-danger" 
+                                                   name="Subject" value="3">
+                                                    <span id="iconCadSetor" class="icon fa fa-times">
+                                                    </button>
+                                                </button>
                                                 
-                                                <a id="SairCadSetor" href="setor.php" id="SairSetor" class="btn btn-secondary btn-icon-split" name="Subject" value="2">
-                                                    <span id="iconCadSetor" class="icon text-white-50 fas fa-trash">
+                                                <button id="SairCadSetor" class="btn btn-secondary" 
+                                                   name="Subject" value="2">
+                                                    <span id="iconCadSetor" class="icon fa fa-trash">
                                                     </span>
-                                                    <span class="text"><?php echo "Fechar" ?></span>
-                                                </a>
+                                                </button>
                                             </td>
                                         </tr>
 

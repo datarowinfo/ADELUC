@@ -1,6 +1,8 @@
 /* 
-    Created on : 14/07/2023, 08:20:08
-    Author     : DataRowInfo>
+    Created on: 
+    25/10/2023, 08:20:08
+    Author: 
+    DataRowInfo
 */
 #descricaosetor{
     width: 300px;
@@ -20,45 +22,50 @@
 
 #ExcluirCadSetor{
     float:right;
+    margin-right:3px;
+    margin-top: 5px;
+    width: 35px;
+    height: 35px;
+    
+}
+
+#LimparCadSetor{   
     margin-top: 5px;
     width: 100px;
     height: 35px;
 }
 
-#SairCadSetor{
+#SairCadSetor{ 
     float:right;
-    margin-right: 5px;
     margin-top: 5px;
-    padding:0;
-    width: 100px;
-    height: 35px;
-    clear;
+    margin-right: 3px;
+    width: 35px;
+    height: 35px;   
 }
 
-#SalvarCadSetor{
+#SalvarCadSetor{ 
     float:right;
+    margin-top: 5px;
+    width: 35px;
+    height: 35px;  
+}
+
+#EditCadSetor{  
     margin-left: 5px;
     margin-top: 5px;
-    padding:0;
     width: 100px;
     height: 35px;
-}
-
-#EditCadSetor{
-    float:right;
-    margin-left: 5px;
-    margin-top: 5px;
-    padding:0;
-    width: 100px;
-    height: 35px;
-}
-
-#iconCadSetor{
-    padding: 8px;
 }
 
 #margin{
     margin-top:15px;
 }
 
-
+#iconCadSetor{
+   
+    top:50%; 
+    left:50%; 
+    width:20px; 
+    height:20px;
+    margin:-5px 0 0 -5px;
+}
