@@ -1,32 +1,41 @@
 <?php
+require_once("../../../connection/conexao.php");
 session_start();
-include_once("../../../connection/conexao.php");
 
-$id = filter_input(INPUT_POST, 'id_hierarquia', FILTER_SANITIZE_NUMBER_INT);
-$descricao = filter_input(INPUT_POST, 'descricao', FILTER_SANITIZE_STRING);
-$caracterizacao = filter_input(INPUT_POST, 'caracterizacao', FILTER_SANITIZE_STRING);
-$acao = filter_input(INPUT_POST, 'Subject', FILTER_SANITIZE_NUMBER_INT);
+if(isset($_POST['Subject']))
+{
+    $id = $_POST['id_hierarquia'];
+    $descricao = $_POST['descricao'];
+    $caracterizacao = $_POST['caracterizacao'];
+    $nome = $_SESSION['UsuarioNome'];
+    $ativo = $_POST['status'];
+    $acao = $_POST['Subject'];
 
-switch($acao){
-	case "1":
-		$result_usuario = "UPDATE adeluc.tb_hierarquia "
-                . "SET descricao='$descricao' , "
-                . "caracterizacao='$caracterizacao', "
-                . "datamodificacao=NOW() "
-                . "WHERE id_hierarquia='$id'";
-            
-                $resultado_usuario = mysqli_query($con, $result_usuario);
+        switch($acao){
+                case "1":
+                        $result_usuario = "UPDATE adeluc.tb_hierarquia "
+                        . "SET descricao='$descricao' , "
+                        . "caracterizacao='$caracterizacao', "
+                        . "datamodificacao=NOW() ,"
+                        . "ativo='$ativo' ,"
+                        . "usuariomodificacao='$nome'"
+                        . "WHERE id_hierarquia='$id'";
 
-                if(mysqli_affected_rows($con)){
-                    $_SESSION['msg'] = "<p style='color:green;'>Usuário editado com sucesso</p>";
-                    header("Location: ../View/setor.php");
-                }else{
-                        $_SESSION['msg'] = "<p style='color:red;'>Usuário não foi editado com sucesso</p>";
-                        header("Location: ../View/Setor.php?id=$id");
-                }
-                break;
+                        $resultado_usuario = mysqli_query($con, $result_usuario); 
+                        
+                        if(mysqli_affected_rows($con)){
+                                
+                                header("Location: ../View/setor_Edit.php");
+                        }else{
+                                $_SESSION['msg'] = "<p style='color:red;'>Usuário não foi editado com sucesso</p>";
+                                header("Location: ../View/setor_Edit.php?id=$id");
+                        }
+                        
+                        break;
 
-	case "2":
-		echo "Case 2: Desenvolvendo!";
-	break;
+                case "2":
+                        echo "Case 2: Desenvolvendo!";
+                break; 
+
+                        }
 }

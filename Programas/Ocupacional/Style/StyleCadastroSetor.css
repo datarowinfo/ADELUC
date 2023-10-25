@@ -18,18 +18,21 @@
     width: 500px;
 }
 
-#LimparCadSetor{
+#ExcluirCadSetor{
     float:right;
     margin-top: 5px;
     width: 100px;
     height: 35px;
 }
 
-#NovoCadSetor{
+#SairCadSetor{
     float:right;
+    margin-right: 5px;
     margin-top: 5px;
-    width: 162px;
+    padding:0;
+    width: 100px;
     height: 35px;
+    clear;
 }
 
 #SalvarCadSetor{
@@ -51,7 +54,7 @@
 }
 
 #iconCadSetor{
-    padding: 9px;
+    padding: 8px;
 }
 
 #margin{

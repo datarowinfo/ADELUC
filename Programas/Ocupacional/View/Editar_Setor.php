@@ -5,6 +5,11 @@ $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 $result_usuario = "SELECT * FROM adeluc.tb_hierarquia WHERE id_hierarquia = '$id'";
 $resultado_usuario = mysqli_query($con, $result_usuario);
 $row_usuario = mysqli_fetch_assoc($resultado_usuario);
+    
+        $descricao = $row_usuario['descricao'];
+        $caracterizacao = $row_usuario['caracterizacao'];
+        $ativo = $row_usuario['ativo'];
+        
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -213,12 +218,12 @@ $row_usuario = mysqli_fetch_assoc($resultado_usuario);
                                         <tr>
 
                                             <td>
-                                                <input type="hidden" name="id" value="<?php echo $row_usuario['id_hierarquia']; ?>">
-                                                Descrição do setor: <input id="descricaosetor" type="text" class="form-control form-control-sm" name="descricao" value="<?php echo $row_usuario['descricao']; ?>">
+                                                <input type="hidden" name="id_hierarquia" value="<?php echo $row_usuario['id_hierarquia']; ?>">
+                                                Descrição do setor: <input id="descricaosetor" type="text" class="form-control form-control-sm" name="descricao" value="<?php echo $descricao; ?>">
                                             </td>
 
                                             <td>
-                                                Caracterização: <input id="caracterizacaosetor" type="text" class="form-control form-control-sm" name="caracterizacao" value="<?php echo $row_usuario['caracterizacao']; ?>">
+                                                Caracterização: <input id="caracterizacaosetor" type="text" class="form-control form-control-sm" name="caracterizacao" value="<?php echo $caracterizacao; ?>">
                                             </td>
 
                                             <td>
@@ -229,8 +234,8 @@ $row_usuario = mysqli_fetch_assoc($resultado_usuario);
 
                                         <tr>
                                             <td colspan = "2">
-                                                <input style="margin-left: 10px" type="radio" name="status" value="1" checked>Ativo
-                                                <input style="margin-left: 10px" type="radio" name="status" value="0"> Desativado
+                                                <input style="margin-left: 10px" type="radio" name="status" value="1" <?php echo ($row_usuario['ativo'] == "1") ? 'checked' : null; ?>>Ativo
+                                                <input style="margin-left: 10px" type="radio" name="status" value="0" <?php echo ($row_usuario['ativo'] == "0") ? 'checked' : null; ?>>Desativado
                                             </td><!-- comment -->
 
                                             <td></td>
@@ -239,16 +244,22 @@ $row_usuario = mysqli_fetch_assoc($resultado_usuario);
                                         <tr>
                                             <td colspan = "2"></td>
                                             <td>
-                                                <button id="SalvarCadSetor" class="btn btn-primary btn-icon-split aling-right" name="Subject" value="1">
+                                                <button id="SalvarCadSetor" class="btn btn-primary btn-icon-split" name="Subject" value="1">
                                                     <span id="iconCadSetor" class="icon text-white-50 fas fa-save">
                                                     </span>
                                                     <span class="text">Salvar</span>
                                                 </button>
-
-                                                <a href="setor.php" id="NovoCadSetor" class="btn btn-secondary btn-icon-split aling-right">
+                                                
+                                                <a id="ExcluirCadSetor" href="setor.php" id="SairSetor" class="btn btn-danger btn-icon-split" name="Subject" value="2">
                                                     <span id="iconCadSetor" class="icon text-white-50 fas fa-trash">
                                                     </span>
-                                                    <span class="text"><?php echo "Novo cadastro" ?></span>
+                                                    <span class="text"><?php echo "Excluir" ?></span>
+                                                </a>
+                                                
+                                                <a id="SairCadSetor" href="setor.php" id="SairSetor" class="btn btn-secondary btn-icon-split" name="Subject" value="2">
+                                                    <span id="iconCadSetor" class="icon text-white-50 fas fa-trash">
+                                                    </span>
+                                                    <span class="text"><?php echo "Fechar" ?></span>
                                                 </a>
                                             </td>
                                         </tr>
@@ -302,12 +313,21 @@ $row_usuario = mysqli_fetch_assoc($resultado_usuario);
                                                 
                                                 echo "<tr>";
                                                     echo"<td>";
-                                                    echo "<a class='btn btn-dark text-white' href='Editar_Setor.php?id=" . $rows_setor['id_hierarquia'] ."'>
+                                                    echo "<a class='btn btn-dark text-white' style='margin-right:2px;' href='Editar_Setor.php?id=" . $rows_setor['id_hierarquia'] ."'>
                                                    
                                                             <svg class='bi d-block mx-auto mb-1' 
-                                                                 width='10' height='10' fill='currentColor'>
+                                                                 width='10' height='12' fill='currentColor'>
                                                             <use xlink:href='../../../fonts/bootstrap-icons.svg#pencil-fill'/>
                                                             </svg></a>";
+                                                    
+                                                          echo "<a class='btn btn-primary text-white' href='pesquisar_Setor.php?id=" . $rows_setor['id_hierarquia'] ."'>
+                                                            <svg class='bi d-block mx-auto mb-1' 
+                                                                 width='10' height='12' fill='currentColor'>
+                                                            <use xlink:href='../../../fonts/bootstrap-icons.svg#search'/>
+                                                            </a>";
+                                                          
+                                                          
+                                                          
                                                     echo"</td>";
                                                         
                                                          ?>
@@ -392,6 +412,7 @@ $row_usuario = mysqli_fetch_assoc($resultado_usuario);
         <!-- Page level custom scripts -->
         <script src="../../../js/demo/datatables-demo.js"></script>
         <script src="../../../js/bootstrap.min.js"></script>
+        
         
     </body>
 </html>

@@ -13,6 +13,7 @@ $acao = $_POST['Subject'];
 switch($acao){
 	case "1":
 		$sql = ("INSERT INTO ADELUC.tb_hierarquia (descricao, caracterizacao, tipo, ativo, datacriacao, usuariocriacao) VALUES (UPPER('$descricao'), UPPER('$caracterizacao'),'$tipo','$status',SYSDATE(),'$criado')");
+                
 		$result = mysqli_query($con, $sql);
 
 		if(!$result) {

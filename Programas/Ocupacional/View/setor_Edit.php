@@ -1,37 +1,8 @@
-<?php
-include_once("../../../Connection/conexao.php");
-session_start();
-
-if(!empty($_GET['id_hierarquia']))
-{
-
-    $id = $_GET = ['id_hierarquia'];
-    
-    $sqlSelect = "SELECT * adeluc.tb_hierarquia FROM WHERE id_hierarquia = '$id'";
-    $result = $con->query($sqlSelect);
-    
-    if($result->num_rows > 0)
-    {
-        while($setor_data = mysqli_fetch_assoc($result))
-        {
-            $descricao = $setor_data['descricao'];
-            $caracterizacao = $setor_data['caracterizacao'];
-            $status = $setor_data['ativo'];
-        }
-
-    }
-    else
-    {
-        header('location: setor.php');
-    }
-}    
-   
-?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
     <head>
-
+        
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -52,6 +23,7 @@ if(!empty($_GET['id_hierarquia']))
 
         <!-- Custom styles for this page -->
         <link href="../../../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+        <meta http-equiv="refresh" content="2; URL='http://localhost/DTR-ADELUC/Programas/Ocupacional/View/setor.php'"/>
 
     </head>
 
@@ -64,7 +36,7 @@ if(!empty($_GET['id_hierarquia']))
             <ul class="navbar-nav bg-dark sidebar sidebar-dark accordion" id="accordionSidebar">
 
                 <!-- Sidebar - Brand -->
-                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../../../app.php">
+                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="app.php">
                     <div class="sidebar-brand-icon rotate-n-20">
                         <i><img src="../../../Image/Logo.png"/></i>
                     </div>
@@ -76,7 +48,7 @@ if(!empty($_GET['id_hierarquia']))
 
                 <!-- Nav Item - Dashboard -->
                 <li class="nav-item">
-                    <a class="nav-link" href="../../../app.php">
+                    <a class="nav-link" href="app.php">
                         <i class="fas fa-fw fa-tachometer-alt"></i>
                         <span>Inicio</span></a>
                 </li>
@@ -132,7 +104,7 @@ if(!empty($_GET['id_hierarquia']))
                             </button>
                         </form>
 
-                       
+
                         <!-- Topbar Navbar -->
                         <ul class="navbar-nav ml-auto bg-dark">
 
@@ -185,12 +157,12 @@ if(!empty($_GET['id_hierarquia']))
                                             <span class="font-weight-bold">Versão atual é a DTRADELUC17072023</span>
                                         </div>
                                     </a>
-                                    
+
                                     <a class="dropdown-item text-center small text-gray-500" href="#">Detalhes da versão</a>
                                 </div>
                             </li>
 
-                            
+
 
                             <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -198,14 +170,14 @@ if(!empty($_GET['id_hierarquia']))
                             <li class="nav-item dropdown no-arrow">
                                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['UsuarioNome']; ?></span>
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">LUCAS SOUZA</span>
                                     <img class="img-profile rounded-circle"
-                                         src="../../../img/undraw_profile.svg">
+                                         src="img/undraw_profile.svg">
                                 </a>
                                 <!-- Dropdown - User Information -->
                                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                      aria-labelledby="userDropdown">
-                                    
+
                                     <a class="dropdown-item" href="#">
                                         <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                                         Activity Log
@@ -229,7 +201,7 @@ if(!empty($_GET['id_hierarquia']))
                             </div>
                             <div class="card-body bg-gray-300">
                                 <p>
-                                <form class="bg-gray-300 text-dark" method="POST" action="../Services/Salvar_Setor.php">
+                                <form class="bg-gray-300 text-dark" method="POST" action="Salvar_Setor.php">
                                     <table>
                                         <tr>
 
@@ -249,8 +221,8 @@ if(!empty($_GET['id_hierarquia']))
 
                                         <tr>
                                             <td colspan = "2">
-                                                <input style="margin-left: 10px" type="radio" name="status" value="1" checked required>Ativo
-                                                <input style="margin-left: 10px" type="radio" name="status" value="0" required>Desativado
+                                                <input style="margin-left: 10px" type="radio" name="status" value="1" checked>Ativo
+                                                <input style="margin-left: 10px" type="radio" name="status" value="0"> Desativado
                                             </td><!-- comment -->
 
                                             <td>
@@ -272,6 +244,12 @@ if(!empty($_GET['id_hierarquia']))
 
 
                                     </table>
+                                    
+                                    <hr class="sidebar-divider">
+
+                                    <div class="alert alert-success" role="alert">
+                                        Cadastro editado com sucesso!
+                                    </div>
                                 </form>
                                 </p>
 
@@ -280,73 +258,88 @@ if(!empty($_GET['id_hierarquia']))
                     </div>
 
 
-                   <?php
-                    if(isset($_SESSION['msg'])){
-                            echo $_SESSION['msg'];
-                            unset($_SESSION['msg']);
-                    }
-		
-                    $result_usuarios = "SELECT * FROM adeluc.tb_hierarquia WHERE tipo = 'SET'";
-                    $resultado_usuarios = mysqli_query($con, $result_usuarios);
-                    
-                echo"<div class='container-fluid bg-gray-400'>"
-                      ."<div class='card shadow mb-4' >"
-                        ."<div class='card-body bg-gray-300'>"
-                            ."<div class='table-responsive bg-gray-300 text-dark'>"
-                                ."<table class='table table-striped table-hover table-sm text-dark' id='dataTable' width='100%' cellspacing='0'>"
-                                    ."<thead class='thead-dark'>"
-                                    .     "<tr>"
-                                    .       "<th>Ação</th>"
-                                    .       "<th>Cód.Setor</th>"
-                                    .       "<th>Setor</th>"
-                                    .       "<th>Caracterização</th>"
-                                    .       "<th>Situação</th>"
-                                    .     "</tr>"
-                                    . "</thead>"
-                                    ."<tbody>";
-                    ini_set('default_charset', 'utf-8');
-                    while($row_usuario = mysqli_fetch_assoc($resultado_usuarios)){
-                        
-                          $auxStatus = $row_usuario['ativo'];
-                                                
+                    <!-- Begin Page Content -->
+                    <div class="container-fluid bg-gray-400">
+
+                        <!-- DataTales Example -->
+                        <div class="card shadow mb-4" >
+                            <div class="card-header py-3 bg-dark">
+                                <h6 class="m-0 font-weight-bold text-light bg-dark">Setores cadastrados</h6>
+                            </div>
+                            <div class="card-body bg-gray-300">
+                                <div class="table-responsive bg-gray-300">
+                                    <table class="table table-striped table-hover table-sm" id="dataTable" width="100%" cellspacing="0">
+                                        <thead class="thead-dark" >
+                                            <tr>
+                                                <th>Ação</th>
+                                                <th>Cód.Setor</th>
+                                                <th>Setor</th>
+                                                <th>Caracterização</th>
+                                                <th>Situação</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+
+                                            <?php
+                                            ini_set('default_charset', 'utf-8');
+                                            require_once("../../../Connection/conexao.php");
+
+                                            $result_setor = "SELECT * FROM adeluc.tb_hierarquia WHERE tipo = 'SET'";
+                                            $resultado_setor = mysqli_query($con, $result_setor);
+                                            while ($rows_setor = mysqli_fetch_array($resultado_setor)) {
+
+                                                $auxStatus = $rows_setor['ativo'];
+
                                                 if ($auxStatus == 1) {
                                                     $status = 'ATIVO';
                                                 } else {
                                                     $status = 'DESATIVADO';
                                                 }
+                                                ?>
 
-                                    echo "<tr>"
-                                    .       "<td>"
-                                            . "<a class='btn btn-dark view_data text-white' href='Editar_Setor.php?id=" . $row_usuario['id_hierarquia'] . "'>
-                                                <svg class='bi d-block mx-auto mb-1' 
-                                                                 width='10' height='10' fill='currentColor'>
-                                                            <use xlink:href='../../../fonts/bootstrap-icons.svg#pencil-fill'/>
-                                                            </svg></a></td>"
-                                    .       "<td>".$row_usuario['id_hierarquia']."</td>"
-                                    .       "<td>".$row_usuario['descricao']."</td>"
-                                    .       "<td>".$row_usuario['caracterizacao']."</td>"
-                                    .       "<td>".$status."</td>"
-                                    . "</tr>";
-                    }
-                                echo"</tbody>"
-                                ."</table>"
-                             ."</div>"
-                          ."</div>"
-                        ."</div>"
-                    ."</div>"
-		?>
+                                                <tr>
+                                                    <td>
+                                                        <button type="button" class="btn btn-dark view_data" 
+                                                                id="<?php echo $rows_setor['descricao']; ?>">
+                                                            <svg class="bi d-block mx-auto mb-1" 
+                                                                 width="10" height="10" fill="currentColor">
+                                                            <use xlink:href="../../../fonts/bootstrap-icons.svg#pencil-fill"/>
+                                                            </svg></button>
+                                                    </td>
+
+
+
+                                                    <td><?php echo $rows_setor['id_hierarquia']; ?></td>
+                                                    <td><?php echo $rows_setor['descricao']; ?></td>
+                                                    <td><?php echo $rows_setor['caracterizacao']; ?></td>
+                                                    <td><?php echo $status; ?></td>
+
+                                                </tr>
+                                                <?php
+                                            }
+                                            ?>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- /.container-fluid -->
 
                 </div>
                 <!-- End of Main Content -->
 
                 <!-- Footer -->
-                <footer class="sticky-footer bg-gradient-dark">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto text-white">
-                        <span>Copyright &copy; Desenvolvido por DataRowInfo 2023</span>
+                <footer class="sticky-footer bg-dark">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+                            <span>Copyright &copy; Your Website 2020</span>
+                        </div>
                     </div>
-                </div>
-            </footer>
+                </footer>
                 <!-- End of Footer -->
 
             </div>
@@ -362,39 +355,23 @@ if(!empty($_GET['id_hierarquia']))
 
         <!-- Logout Modal-->
         <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content   bg-dark">
-                <div class="modal-header">
-                    <h5 class="modal-title text-white" id="exampleModalLabel">Pronto para sair?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body text-white">Selecione "Logout" para finalizar a sua sessão!</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login/logout.php">Logout</a>
-                </div>
-            </div>
-        </div>
-    </div>
-        
-        <!-- Editar Setor Modal-->
-        <div class="modal fade bd-example-modal-lg" id="EditSetor" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content   bg-dark">
-                <div class="modal-header">
-                    
-                    <h5 class="modal-title text-white" id="exampleModalLabel">Editar - cadastro de setor</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <a class="btn btn-primary" href="Index.php">Logout</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
         <!-- Bootstrap core JavaScript-->
         <script src="../../../vendor/jquery/jquery.min.js"></script>
@@ -412,7 +389,7 @@ if(!empty($_GET['id_hierarquia']))
 
         <!-- Page level custom scripts -->
         <script src="../../../js/demo/datatables-demo.js"></script>
-        <script src="../../../js/bootstrap.min.js"></script>
-        
+
     </body>
+
 </html>
