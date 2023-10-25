@@ -24,10 +24,10 @@ if(isset($_POST['Subject']))
                         $resultado_usuario = mysqli_query($con, $result_usuario); 
                         
                         if(mysqli_affected_rows($con)){
-                                $_SESSION['msg'] =  "<div class='container'><div class='alert alert-success alert-dismissible fade show' role='alert'>
+                                $_SESSION['msg'] =  "<div class='alert alert-success alert-dismissible fade show' role='alert'>
                                          Usuário editado com <strong>sucesso!</strong>
                                          <button type='button' class='close' data-dismiss='alert' aria-label='close'>
-                                         <span aria-hidden='true'>&times;</span></button></div></div>";
+                                         <span aria-hidden='true'>&times;</span></button></div>";
                                 header("Location: ../View/setor.php");
                         }else{
                                 $_SESSION['msg'] =  "<div class='container'><div class='alert alert-danger alert-dismissible fade show' role='alert'>

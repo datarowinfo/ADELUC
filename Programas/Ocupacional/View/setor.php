@@ -173,7 +173,7 @@ if(!empty($_GET['id_hierarquia']))
                                      aria-labelledby="alertsDropdown">
                                     <h6 class="dropdown-header">
                                         Versão do Sistema
-                                    </h6>
+                                   3 </h6>
                                     <a class="dropdown-item d-flex align-items-center" href="#">
                                         <div class="mr-3">
                                             <div class="icon-circle bg-primary">
@@ -252,25 +252,31 @@ if(!empty($_GET['id_hierarquia']))
                                                 <input style="margin-left: 10px" type="radio" name="status" value="1" checked required>Ativo
                                                 <input style="margin-left: 10px" type="radio" name="status" value="0" required>Desativado
                                             </td><!-- comment -->
-
                                             <td>
-                                                <button id="SalvarCadSetor" class="btn btn-secondary btn-icon-split aling-right" name="Subject" value="1">
-                                                    <span id="iconCadSetor" class="icon text-white-50 fas fa-save">
+                                                <button id="SalvarCad" class="btn btn-secondary aling-right" name="Subject" value="1">
+                                                    <span id="iconCad" class="icon text-white-70 fas fa-save">
                                                     </span>
                                                     <span class="text">Salvar</span>
                                                 </button>
 
-                                                <button id="LimparCadSetor" class="btn btn-secondary btn-icon-split aling-right" name="Subject" value="2">
-                                                    <span id="iconCadSetor" class="icon text-white-50 fas fa-trash">
+                                                <button id="LimparCadSetor" class="btn btn-secondary aling-right" name="Subject" value="2">
+                                                    <span id="iconCad" class="icon text-white-70 fas fa-times">
                                                     </span>
                                                     <span class="text">Limpar</span>
                                                 </button>
-
                                             </td>
-
                                         </tr>
-
-
+                                        
+                                        <tr><td colspan="3"></td></tr>
+                                        
+                                        <tr>
+                                            <td colspan = '3'>
+                                                <?php if(isset($_SESSION['msg'])){
+                                                        echo $_SESSION['msg'];
+                                                        unset($_SESSION['msg']);
+                                                }?>
+                                            </td>
+                                        </tr>
                                     </table>
                                 </form>
                                 </p>
@@ -281,12 +287,7 @@ if(!empty($_GET['id_hierarquia']))
 
 
                    <?php
-                  if(isset($_SESSION['msg'])){
-                            echo $_SESSION['msg'];
-                            unset($_SESSION['msg']);
-                    }
-                    
-		
+                 
                 $result_usuarios = "SELECT * FROM adeluc.tb_hierarquia WHERE tipo = 'SET'";
                 $resultado_usuarios = mysqli_query($con, $result_usuarios);
                     
