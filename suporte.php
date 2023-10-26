@@ -2,8 +2,9 @@
 require_once("Connection/conexao.php");
 
 // A sessão precisa ser iniciada em cada página diferente
-if (!isset($_SESSION))
+if (!isset($_SESSION)) {
     session_start();
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -250,13 +251,13 @@ if (!isset($_SESSION))
 
                                                                     <tr>
                                                                         <td colspan="2">
-                                                                            Especificação: <textarea id="especificacaochamado" type="text" class="form-control form-control-sm" name="especificacao"></textarea>
+                                                                            Especificação: <textarea id="especificacao" type="text" class="form-control form-control-sm" name="especificacao"></textarea>
                                                                         </td>
                                                                     </tr>
 
                                                                     <tr>
                                                                         <td>
-                                                                            <input id="descricaochamado" type="text" class="form-control form-control-sm" name="descricao" disabled>
+                                                                            <input id="anexar" type="text" class="form-control form-control-sm" name="anexar" disabled>
                                                                         </td>
                                                                         <td>
                                                                             <button id="Anexar" class="btn btn-primary btn-icon-split aling-right" name="Anexo" value="3">
@@ -268,7 +269,7 @@ if (!isset($_SESSION))
 
                                                                     <tr>
                                                                         <td>
-                                                                            Observação: <input id="obschamado" type="text" class="form-control form-control-sm" name="obschamado">
+                                                                            Observação: <input id="obs" type="text" class="form-control form-control-sm" name="obs">
                                                                         </td>
 
 
@@ -339,13 +340,11 @@ if (!isset($_SESSION))
 
                                                         <td>
 
-                                                            <button type="button" class="btn btn-dark view_data text-white" 
-                                                                    id="<?php echo $rows_setor['id_chamado']; ?>">
+                                                            <button type="button" class="btn btn-dark view_data text-white">
                                                                 <svg class="bi d-block mx-auto mb-1" width="10" height="10" fill="currentColor">
                                                                 <use xlink:href="fonts/bootstrap-icons.svg#pencil-fill"/></svg></button>
 
-                                                            <button type="button" class="btn btn-dark view_data text-white" 
-                                                                    id="<?php echo $rows_setor['id_chamado']; ?>">
+                                                            <button type="button" class="btn btn-dark view_data text-white">
                                                                 <svg class="bi d-block mx-auto mb-1" width="10" height="10" fill="currentColor">
                                                                 <use xlink:href="fonts/bootstrap-icons.svg#search"/></svg></button>
                                                         </td>
