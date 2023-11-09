@@ -212,7 +212,7 @@ if (!isset($_SESSION)) {
                                 </div>
 
                                 <div class="card-body bg-gray-300">
-
+                                   
                                     <div class="modal fade" id="cadastrochamado" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                                          aria-hidden="true">
                                         <div class="modal-dialog modal-lg" role="document">
@@ -226,9 +226,14 @@ if (!isset($_SESSION)) {
 
                                                 <div class="container-fluid bg-gray-400">
                                                     <div class="card shadow m-4">
+                                                        
+                                                        
 
                                                         <div class="card-body bg-gray-300">
                                                             <p>
+                                                                
+                                                                
+                                                                
                                                             <form class="bg-gray-300 text-dark" method="POST" action="Salvar_chamado.php">
                                                                 <table>
                                                                     <tr>
@@ -349,7 +354,7 @@ if (!isset($_SESSION)) {
                                                                 <use xlink:href="fonts/bootstrap-icons.svg#search"/></svg></button>
                                                         </td>
 
-                                                        <th><?php echo $rows_setor['numero']; ?></th>
+                                                        <th><?php echo $rows_setor['id_chamados']; ?></th>
                                                         <th><?php echo $rows_setor['descricao']; ?></th>
                                                         <td><?php echo $rows_setor['datainclusao']; ?></td>
                                                         <td><?php echo $rows_setor['prioridade']; ?></td>

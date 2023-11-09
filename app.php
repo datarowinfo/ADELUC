@@ -51,7 +51,7 @@ require_once("Connection/conexao.php");
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
                 <a class="nav-link" href="app.php">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <i class="fas fa-home"></i>
                     <span>Inicio</span></a>
             </li>
 
@@ -62,12 +62,31 @@ require_once("Connection/conexao.php");
             <div class="sidebar-heading">
                 Módulos
             </div>
+            
+            <!-- Nav Item - Fisioterapia Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#config"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i style="margin-left:2px" class="fas fa-cog"></i>
+                    <span>Config. e permissões</span>
+                </a>
+                <div id="config" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Fisioterapia:</h6>
+                        <a class="collapse-item" href="programas/config/view/usuario.php">Cadastro de usuários</a>
+                        <a class="collapse-item" href="utilities-border.html">Exames complemntares</a>
+                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
+                        <a class="collapse-item" href="utilities-other.html">Other</a>
+                    </div>
+                </div>
+            </li>
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
+                    <i style="margin-left:2px;" class="fas fa-medkit"></i>
                     <span>Ocupacional</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -88,7 +107,7 @@ require_once("Connection/conexao.php");
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
+                    <i style="margin-left:2px;" class="fas fa-shopping-cart"></i>
                     <span>Atacado e Varejo</span>
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
@@ -107,8 +126,8 @@ require_once("Connection/conexao.php");
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#fisioterapitens"
                     aria-expanded="true" aria-controls="fisioterapitens">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Fisioterapia</span>
+                    <i style="margin-left:3px;" class="fas fa-walking"></i>
+                    <span style="margin-left:5px;">Fisioterapia</span>
                 </a>
                 <div id="fisioterapitens" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
@@ -126,13 +145,13 @@ require_once("Connection/conexao.php");
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Faturamento</span>
+                    <i style="margin-left:3px;" class="fas fa-dollar-sign"></i>
+                    <span style="margin-left:5px;">Faturamento</span>
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Faturamento:</h6>
+                        <h6 class="collapse-header">Faturamento</h6>
                         <a class="collapse-item" href="utilities-color.html">Avaliação Cardiorespiratória</a>
                         <a class="collapse-item" href="utilities-border.html">Exames complementares</a>
                         <a class="collapse-item" href="utilities-animation.html">Animations</a>
@@ -145,8 +164,8 @@ require_once("Connection/conexao.php");
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Nota Fiscal</span>
+                    <i style="margin-left:3px;" class="fas fa-file-alt"></i>
+                    <span style="margin-left:5px;">Nota Fiscal</span>
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
@@ -162,29 +181,10 @@ require_once("Connection/conexao.php");
             
              <!-- Nav Item - Fisioterapia Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#config"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Config. e permissões</span>
-                </a>
-                <div id="config" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Fisioterapia:</h6>
-                        <a class="collapse-item" href="programas/config/view/usuario.php">Cadastro de usuários</a>
-                        <a class="collapse-item" href="utilities-border.html">Exames complemntares</a>
-                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
-                    </div>
-                </div>
-            </li>
-            
-             <!-- Nav Item - Fisioterapia Menu -->
-            <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Outros</span>
+                    <i style="margin-left:3px;" class="fas fa-ellipsis-h"></i>
+                    <span style="margin-left:5px;">Outros</span>
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
@@ -202,18 +202,12 @@ require_once("Connection/conexao.php");
             <hr class="sidebar-divider d-none d-md-block">
             
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#suporte"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Suporte</span>
+                <a tupe="button" class="nav-link collapsed" href="http://localhost/DTR-ADELUC/SUPORTE/" target="#">
+                    
+                    <button class="btn btn-primary">
+                        <i class="fas fa-tags"></i>
+                        <span>Sistema de chamados</span></button>
                 </a>
-                <div id="suporte" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">CHAMADOS:</h6>
-                        <a class="collapse-item" href="suporte.php">Abrir chamado</a>
-                        <a class="collapse-item" href="cards.html">Cards</a>
-                        
             </li>
             
             <hr class="sidebar-divider d-none d-md-block">
