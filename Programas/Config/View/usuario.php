@@ -211,88 +211,77 @@ require_once("../../../Connection/conexao.php");
                             </div>
                             <div class="card-body bg-gray-300">
                                 <p>
-                                <form class="bg-gray-300 text-dark" method="POST" action="Salvar_Usuario.php">
+                                <form class="bg-gray-300 text-dark" method="POST" action="../Services/Salvar_Usuario.php">
+                                    
                                     <table>
                                         <tr>
                                             <td>
-                                                Usuário: <input id="usuario" type="text" class="form-control form-control-sm" name="usuario">
-                                            </td>
+                                                <table>
+                                                    <tr>
+                                                    <td>
+                                                        Usuário: <input id="usuario" type="text" class="form-control form-control-sm" name="usuario">
+                                                    </td>
 
-                                            <td>
-                                                Descricao: <input id="descricao" type="text" class="form-control form-control-sm" name="descricao">
-                                            </td>
-                                            
-                                        </tr>
+                                                    <td>
+                                                        Descricao: <input id="descricao" type="text" class="form-control form-control-sm" name="descricao">
+                                                    </td>
+                                                    </tr>
                                         
-                                        <tr>
-                                            <td>
-                                                Senha: <input id="password" type="password" class="form-control form-control-sm" name="caracterizacao">
-                                             </td>
-                                             
-                                              <td>
-                                                E-mail: <input id="email" type="email" class="form-control form-control-sm" name="email">
-                                            </td> 
-                                            
-                                        </tr>
+                                                    <tr>
+                                                        <td>
+                                                            Senha: <input id="password" type="password" class="form-control form-control-sm" name="caracterizacao">
+                                                         </td>
 
-                                        <tr>
-                                            <td>
-                                                Confirmar senha: <input id="password" type="password" class="form-control form-control-sm" name="caracterizacao">
-                                            </td>
-                                            
-                                             <td>
-                                                Observação: <input id="observacao" type="text" class="form-control form-control-sm" name="caracterizacao">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            
-                                            <td>
-                                                Permissão: 
-                                                <select id="permissao" class="form-control form-control-sm">
-                                                    <option value="Vazio">Selecione</option>;
-                                                              
-                                                            <?php
+                                                          <td>
+                                                            E-mail: <input id="email" type="email" class="form-control form-control-sm" name="email">
+                                                        </td> 
+                                                    </tr>
 
-                                                              require_once("../../../Connection/conexao.php");    
+                                                    <tr>
+                                                        <td>
+                                                            Confirmar senha: <input id="password" type="password" class="form-control form-control-sm" name="caracterizacao">
+                                                        </td>
 
-                                                              $result_usuarios = "select * from adeluc.tb_nivel";
-                                                              $resultado_usuarios = mysqli_query($con, $result_usuarios);
-                                                              while($row_usuario = mysqli_fetch_assoc($resultado_usuarios)){
-                                                              ?>
-                                                              
-                                                              <option value="<?php echo $row_usuario['codigo'];?>"><?php echo $row_usuario['descricaonivel']; ?>
-                                                              </option>
-                                                              <?php 
-                                                              } 
-                                                              ?>
-                                                          </select>
+                                                         <td>
+                                                            Observação: <input id="observacao" type="text" class="form-control form-control-sm" name="caracterizacao">
+                                                        </td>
+                                                    </tr>
+                                                </table>
                                                 
                                             </td>
                                             
                                             <td>
-                                                <input style="margin-left: 10px" type="radio" name="status" value="1" checked>Ativo
-                                                <input style="margin-left: 10px" type="radio" name="status" value="0"> Desativado
-                                            </td><!-- comment -->
-                                       
-                                        </tr>
-                                        <tr>
-                                            <td colspan ="2">
-                                                <button id="SalvarCadUsuario" class="btn btn-secondary btn-icon-split aling-right" name="Subject" value="1">
-                                                    <span id="iconCadSetor" class="icon text-white-50 fas fa-save">
-                                                    </span>
-                                                    <span class="text">Salvar</span>
-                                                </button>
-
-                                                <button id="LimparCadUsuario" class="btn btn-secondary btn-icon-split aling-right" name="Subject" value="2">
-                                                    <span id="iconCadUsuario" class="icon text-white-50 fas fa-trash">
-                                                    </span>
-                                                    <span class="text">Limpar</span>
-                                                </button>
+                                                
+                                                <table>
+                                                  
+                                                              
+                                                         
+                                                    <tr><td>
+                                                              <div class="card-header py-1 bg-gray-300">
+                                                                    <h6 class="m-0 font-weight-bold">Liberar Módulo:</h6>
+                                                                </div
+                                                            </td></tr>
+                                                    <tr><td><input type="checkbox" id="admin" name="admin" value="S"/> Administrador</td></tr>
+                                                    <tr><td><input type="checkbox" id="demo" name="demo" value="S"/> Demo</td></tr>
+                                                    <tr><td><input type="checkbox" id="fat" name="fat" value="S"/> Faturamento</td></tr>
+                                                    <tr><td><input type="checkbox" id="nfe" name="nfe" value="S"/> Nota Fiscal</td></tr>
+                                                    <tr><td><input type="checkbox" id="fisio" name="fisio" value="S"/> Fisio</td></tr>
+                                                </table>
                                             </td>
-                                             
+                                            
+                                            <td>
+                                                <table>
+                                                   
+                                                    <tr><td><input type="checkbox" id="ocupacional" name="ocupacional" value="S"/> Ocupacional</td></tr>
+                                                    <tr><td><input type="checkbox" id="clinica" name="clinica" value="S"/> Clinicas</td></tr>
+                                                    <tr><td><input type="checkbox" id="desenv" name="desenv" value="S"/> Desenvolvedor</td></tr>
+                                                    <tr><td><input type="checkbox" id="atacarejo" name="atacarejo" value="S"/> Atacarejo</td></tr>
+                                                </table>
+                                            </td>
+                                            
                                         </tr>
-                                         
                                     </table>
+                                    
                                 </form>
                                 </p>
 
