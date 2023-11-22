@@ -229,7 +229,7 @@ require_once("../../../Connection/conexao.php");
                                         
                                                     <tr>
                                                         <td>
-                                                            Senha: <input id="password" type="password" class="form-control form-control-sm" name="caracterizacao">
+                                                            Senha: <input id="password" type="password" class="form-control form-control-sm" name="senha">
                                                          </td>
 
                                                           <td>
@@ -239,12 +239,11 @@ require_once("../../../Connection/conexao.php");
 
                                                     <tr>
                                                         <td>
-                                                            Confirmar senha: <input id="password" type="password" class="form-control form-control-sm" name="caracterizacao">
+                                                            Confirmar senha: <input id="password" type="password" class="form-control form-control-sm" name="confsenha">
                                                         </td>
 
                                                          <td>
-                                                            Observação: <input id="observacao" type="text" class="form-control form-control-sm" name="caracterizacao">
-                                                        </td>
+                                                            Observação: <input id="observacao" type="text" class="form-control form-control-sm" name="descricaoobs"
                                                     </tr>
                                                 </table>
                                                 
@@ -261,27 +260,52 @@ require_once("../../../Connection/conexao.php");
                                                                     <h6 class="m-0 font-weight-bold">Liberar Módulo:</h6>
                                                                 </div
                                                             </td></tr>
-                                                    <tr><td><input type="checkbox" id="admin" name="admin" value="S"/> Administrador</td></tr>
-                                                    <tr><td><input type="checkbox" id="demo" name="demo" value="S"/> Demo</td></tr>
-                                                    <tr><td><input type="checkbox" id="fat" name="fat" value="S"/> Faturamento</td></tr>
-                                                    <tr><td><input type="checkbox" id="nfe" name="nfe" value="S"/> Nota Fiscal</td></tr>
-                                                    <tr><td><input type="checkbox" id="fisio" name="fisio" value="S"/> Fisio</td></tr>
+                                                    <tr><td><input type="checkbox" id="admin" name="admin" value="#ADMIN"/> Administrador</td></tr>
+                                                    <tr><td><input type="checkbox" id="demo" name="demo" value="#DEMO"/> Demo</td></tr>
+                                                    <tr><td><input type="checkbox" id="fat" name="fat" value="#FAT"/> Faturamento</td></tr>
+                                                    <tr><td><input type="checkbox" id="nfe" name="nfe" value="#NFE"/> Nota Fiscal</td></tr>
+                                                    <tr><td><input type="checkbox" id="fisio" name="fisio" value="#FISIO"/> Fisio</td></tr>
                                                 </table>
                                             </td>
                                             
                                             <td>
                                                 <table>
                                                    
-                                                    <tr><td><input type="checkbox" id="ocupacional" name="ocupacional" value="S"/> Ocupacional</td></tr>
-                                                    <tr><td><input type="checkbox" id="clinica" name="clinica" value="S"/> Clinicas</td></tr>
-                                                    <tr><td><input type="checkbox" id="desenv" name="desenv" value="S"/> Desenvolvedor</td></tr>
-                                                    <tr><td><input type="checkbox" id="atacarejo" name="atacarejo" value="S"/> Atacarejo</td></tr>
+                                                    <tr><td><input type="checkbox" id="ocupacional" name="ocup" value="#OCUP"/> Ocupacional</td></tr>
+                                                    <tr><td><input type="checkbox" id="clinica" name="cli" value="#CLIN"/> Clinicas</td></tr>
+                                                    <tr><td><input type="checkbox" id="desenv" name="desenv" value="#DESENV"/> Desenvolvedor</td></tr>
+                                                    <tr><td><input type="checkbox" id="atacarejo" name="atac" value="#ATAC"/> Atacarejo</td></tr>
                                                 </table>
                                             </td>
                                             
                                         </tr>
+                                        
+                                         <tr>
+                                            <td><input type="radio" id="ativo" name="status" value="1" checked/> Ativo
+                                                <input type="radio" id="desativado" name="status" value="0"/> Desativado
+                                            <td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3">
+                                                 <button id="SalvarCadUsuario" class="btn btn-primary btn-icon-split aling-right" name="subject" value="1">
+                                                    <span id="iconCadUsuario" class="icon text-white-50 fas fa-save">
+                                                    </span>
+                                                    <span class="text">Salvar</span>
+                                                </button>
+
+                                                <button id="LimparCadUsuario" class="btn btn-secondary btn-icon-split aling-right" name="subject" value="2">
+                                                    <span id="iconCadUsuario" class="icon text-white-50 fas fa-trash">
+                                                    </span>
+                                                    <span class="text">Limpar</span>
+                                                </button>
+
+                                            <td>
+                                        </tr>
+                                        
                                     </table>
                                     
+                                   
                                 </form>
                                 </p>
 
@@ -304,7 +328,7 @@ require_once("../../../Connection/conexao.php");
                                                 <th>Ação</th>
                                                 <th>Usuário</th>
                                                 <th>Descrição</th>
-                                                <th>Permissão</th>
+                                                 <th>Papel</th>
                                                 <th>Situação</th>
                                             </tr>
                                             
@@ -318,7 +342,7 @@ require_once("../../../Connection/conexao.php");
                                             ini_set('default_charset', 'utf-8');
                                             require_once("../../../Connection/conexao.php");
 
-                                            $result_setor = "SELECT * FROM adeluc.tb_usuarios join tb_nivel on tb_nivel.codigo = tb_usuarios.nivel;";
+                                            $result_setor = "SELECT * FROM adeluc.tb_usuarios";
                                             $resultado_setor = mysqli_query($con, $result_setor);
                                             while ($rows_setor = mysqli_fetch_array($resultado_setor)) {
                                                 
@@ -329,6 +353,7 @@ require_once("../../../Connection/conexao.php");
                                                 } else {
                                                     $status = 'DESATIVADO';
                                                 }
+                                                
                                                 ?>
 
                                                 <tr>
@@ -344,7 +369,7 @@ require_once("../../../Connection/conexao.php");
 
                                                     <td><?php echo $rows_setor['usuario']; ?></td>
                                                     <td><?php echo $rows_setor['nome']; ?></td>
-                                                    <td><?php echo $rows_setor['descricaonivel']; ?></td>
+                                                    <td><?php echo $rows_setor['nivel_mod']; ?></td>
                                                     <td><?php echo $status; ?></td>
 
                                                 </tr>

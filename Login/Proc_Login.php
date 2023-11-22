@@ -8,14 +8,14 @@ require_once("../Connection/conexao.php");
       header("Location: index.php"); exit;
   }
 
+  $dado='ADELUC.ADEMILZA.LUCAS';
+  $pass = $_POST['senha'];
+  $senha = $dado.$pass.$dado;
+  
   $usuario = ($_POST['usuario']);
-  $pass = ($_POST['senha']);
 
-  $dado = 'BYL.';
-  $dado2 = 'N1ghtw1sh@Pr0s0p0p314';
-  $senha = $dado.$pass.$dado2.$pass.$dado;
   // Validação do usuário/senha digitados
-  $very = "SELECT `id`, `nome`, `nivel` FROM `tb_usuarios` WHERE (`usuario` = '".$usuario ."') AND (`senha` = '". sha1($senha) ."') AND (`ativo` = 1) LIMIT 1";
+  $very = "SELECT `id`, `nome`, `nivel_mod` FROM `tb_usuarios` WHERE (`usuario` = '".$usuario ."') AND (`senha` = '". sha1($senha) ."') AND (`ativo` = 1) LIMIT 1";
   $query = $con -> query($very);
   
   if (mysqli_num_rows($query) != 1) {
@@ -34,42 +34,20 @@ require_once("../Connection/conexao.php");
     $id = $_SESSION['UsuarioID'] = $resultado['id'];
     $usuario = $_SESSION['Usuario'] = $resultado['usuario'];
     $nome = $_SESSION['UsuarioNome'] = $resultado['nome'];
-    $nivel = $_SESSION['UsuarioNivel'] = $resultado['nivel'];
+    $nivel = $_SESSION['UsuarioNivel'] = $resultado['nivel_mod'];
 
     
     // aqui voce verifica a sessão
     if($nivel == 1){
     header('Location: ../app.php');
     }
-    else if($nivel == 2){
-    header('Location: ../app1.php');
-    }
-    else if($nivel == 3){
-    header('Location: ../app#2.php');
-    }
-    else if($nivel == 4){
-    header('Location: ../app#3.php');
-    }
-    else if($nivel == 5){
-    header('Location: ../app#4.php');
-    }
-    else if($nivel == 6){
-    header('Location: ../app#5.php');
-    }
-    else if($nivel == 7){
-    header('Location: ../app#6.php');
-    }
-    else if($nivel == 8){
-    header('Location: ../app#7.php');
-    }
+   
     else{
     // caso a condição acima for falsa é redirecinado para usuario basico
-    header('Location: .login_error.php');
+    header('Location: login_error.php');
     }
 
 // Redireciona o visitante
 //header("Location: restrito.php"); exit;
 
   }
-
-  ?>

@@ -3,7 +3,7 @@
 	$servidor = 'localhost';
 	$usuario = 'root';
 	$senha = 'root';
-	$banco = 'byluso_HOMOLOGACAO';
+	$banco = 'adeluc';
 
 	$con = mysqli_connect($servidor, $usuario, $senha, $banco);
 	mysqli_set_charset($con, "utf8mb4");

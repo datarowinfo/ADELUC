@@ -18,7 +18,7 @@
 <div class="container">
 
   <!-- Formulário de Login -->
-  <form class="form-signin" action="LOGIN/Proc_Login.php" method="post">
+  <form class="form-signin" action="Login/Proc_Login.php" method="post">
   <h1 class="h3 mb-3 font-weight-normal"><img src="image/LogoLogin.png"></h1>
         <input type="text" name="usuario" id="txUsuario" maxlength="25" class="form-control" placeholder="Seu usuario" required autofocus/>
         <input type="password" name="senha" id="txSenha" class="form-control" placeholder="Senha" required />
