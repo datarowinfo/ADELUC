@@ -204,117 +204,7 @@ require_once("../../../Connection/conexao.php");
                         </ul>
 
                     </nav>
-                    <!-- End of Topbar -->
-                    <div class="container-fluid bg-gray-400">
-                        <div class="card shadow mb-4">
-                            <div class="card-header py-3 bg-dark">
-                                <h6 class="m-0 font-weight-bold text-light">Cadastro de usuário</h6>
-                            </div>
-                            <div class="card-body bg-gray-300">
-                                <p>
-                                <form class="bg-gray-300 text-dark" method="POST" action="../Services/Salvar_Usuario.php">
-                                    
-                                    <table>
-                                        <tr>
-                                            <td>
-                                                <table>
-                                                    <tr>
-                                                    <td>
-                                                        Usuário: <input id="usuario" type="text" class="form-control form-control-sm" name="usuario">
-                                                    </td>
-
-                                                    <td>
-                                                        Descricao: <input id="descricao" type="text" class="form-control form-control-sm" name="descricao">
-                                                    </td>
-                                                    </tr>
-                                        
-                                                    <tr>
-                                                        <td>
-                                                            Senha: <input id="password" type="password" class="form-control form-control-sm" name="senha">
-                                                         </td>
-
-                                                          <td>
-                                                            E-mail: <input id="email" type="email" class="form-control form-control-sm" name="email">
-                                                        </td> 
-                                                    </tr>
-
-                                                    <tr>
-                                                        <td>
-                                                            Confirmar senha: <input id="password" type="password" class="form-control form-control-sm" name="confsenha">
-                                                        </td>
-
-                                                         <td>
-                                                            Observação: <input id="observacao" type="text" class="form-control form-control-sm" name="descricaoobs"
-                                                    </tr>
-                                                </table>
-                                                
-                                            </td>
-                                            
-                                            <td>
-                                                
-                                                <table>
-                                                  
-                                                              
-                                                         
-                                                    <tr><td>
-                                                              <div class="card-header py-1 bg-gray-300">
-                                                                    <h6 class="m-0 font-weight-bold">Liberar Módulo:</h6>
-                                                                </div
-                                                            </td></tr>
-                                                    <tr><td><input type="checkbox" id="admin" name="admin" value="#ADMIN"/> Administrador</td></tr>
-                                                    <tr><td><input type="checkbox" id="demo" name="demo" value="#DEMO"/> Demo</td></tr>
-                                                    <tr><td><input type="checkbox" id="fat" name="fat" value="#FAT"/> Faturamento</td></tr>
-                                                    <tr><td><input type="checkbox" id="nfe" name="nfe" value="#NFE"/> Nota Fiscal</td></tr>
-                                                    <tr><td><input type="checkbox" id="fisio" name="fisio" value="#FISIO"/> Fisio</td></tr>
-                                                </table>
-                                            </td>
-                                            
-                                            <td>
-                                                <table>
-                                                   
-                                                    <tr><td><input type="checkbox" id="ocupacional" name="ocup" value="#OCUP"/> Ocupacional</td></tr>
-                                                    <tr><td><input type="checkbox" id="clinica" name="cli" value="#CLIN"/> Clinicas</td></tr>
-                                                    <tr><td><input type="checkbox" id="desenv" name="desenv" value="#DESENV"/> Desenvolvedor</td></tr>
-                                                    <tr><td><input type="checkbox" id="atacarejo" name="atac" value="#ATAC"/> Atacarejo</td></tr>
-                                                </table>
-                                            </td>
-                                            
-                                        </tr>
-                                        
-                                         <tr>
-                                            <td><input type="radio" id="ativo" name="status" value="1" checked/> Ativo
-                                                <input type="radio" id="desativado" name="status" value="0"/> Desativado
-                                            <td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="3">
-                                                 <button id="SalvarCadUsuario" class="btn btn-primary btn-icon-split aling-right" name="subject" value="1">
-                                                    <span id="iconCadUsuario" class="icon text-white-50 fas fa-save">
-                                                    </span>
-                                                    <span class="text">Salvar</span>
-                                                </button>
-
-                                                <button id="LimparCadUsuario" class="btn btn-secondary btn-icon-split aling-right" name="subject" value="2">
-                                                    <span id="iconCadUsuario" class="icon text-white-50 fas fa-trash">
-                                                    </span>
-                                                    <span class="text">Limpar</span>
-                                                </button>
-
-                                            <td>
-                                        </tr>
-                                        
-                                    </table>
-                                    
-                                   
-                                </form>
-                                </p>
-
-                            </div>
-                        </div>
-                    </div>
-
-
+                    
                     <!-- Begin Page Content -->
                     <div class="container-fluid bg-gray-400">
 
@@ -328,9 +218,20 @@ require_once("../../../Connection/conexao.php");
                                             <tr>
                                                 <th>Ação</th>
                                                 <th>Usuário</th>
-                                                <th>Descrição</th>
-                                                 <th>Papel</th>
+                                                <th>Nome</th>
                                                 <th>Situação</th>
+                                                <th>Inclusão</th>
+                                                <th>Por</th>
+                                                <th>Administrador</th>
+                                                <th>Demonstração</th>
+                                                <th>Faturamento</th>
+                                                <th>Nota</th>
+                                                <th>Clinicas</th>
+                                                <th>Fisioterapia</th>
+                                                <th>Desenvolvedor</th>
+                                                <th>Ocupacional</th>
+                                                <th>Atacado</th>
+                                                
                                             </tr>
                                             
                                                                                   
@@ -343,11 +244,11 @@ require_once("../../../Connection/conexao.php");
                                             ini_set('default_charset', 'utf-8');
                                             require_once("../../../Connection/conexao.php");
 
-                                            $result_setor = "SELECT * FROM adeluc.tb_usuarios";
+                                            $result_setor = "SELECT * FROM adeluc.vw_modulos";
                                             $resultado_setor = mysqli_query($con, $result_setor);
                                             while ($rows_setor = mysqli_fetch_array($resultado_setor)) {
                                                 
-                                                $auxStatus = $rows_setor['ativo'];
+                                                $auxStatus = $rows_setor['status'];
                                                 
                                                 if ($auxStatus == 1) {
                                                     $status = 'ATIVO';
@@ -370,8 +271,18 @@ require_once("../../../Connection/conexao.php");
 
                                                     <td><?php echo $rows_setor['usuario']; ?></td>
                                                     <td><?php echo $rows_setor['nome']; ?></td>
-                                                    <td><?php echo $rows_setor['nivel_mod']; ?></td>
                                                     <td><?php echo $status; ?></td>
+                                                    <td><?php echo $rows_setor['inclusao']; ?></td>
+                                                    <td><?php echo $rows_setor['por']; ?></td>
+                                                    <td class="text-primary font-weight-bold"><?php echo $rows_setor['administrador']; ?></td>
+                                                    <td class="text-primary font-weight-bold"><?php echo $rows_setor['demonstracao']; ?></td>
+                                                    <td class="text-primary font-weight-bold"><?php echo $rows_setor['faturamento']; ?></td>
+                                                    <td class="text-primary font-weight-bold"><?php echo $rows_setor['nota']; ?></td>
+                                                    <td class="text-primary font-weight-bold"><?php echo $rows_setor['clinicas']; ?></td>
+                                                    <td class="text-primary font-weight-bold"><?php echo $rows_setor['fisioterapia']; ?></td>
+                                                    <td class="text-primary font-weight-bold"><?php echo $rows_setor['desenvolvedor']; ?></td>
+                                                    <td class="text-primary font-weight-bold"><?php echo $rows_setor['ocupacional']; ?></td>
+                                                    <td class="text-primary font-weight-bold"><?php echo $rows_setor['atacado']; ?></td>
 
                                                 </tr>
                                                 <?php

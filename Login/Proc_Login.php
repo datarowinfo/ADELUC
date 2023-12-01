@@ -38,7 +38,7 @@ require_once("../Connection/conexao.php");
 
     
     // aqui voce verifica a sessão
-    if($nivel == 1){
+    if($nivel == '#ADM#DEM'){
     header('Location: ../app.php');
     }
    
