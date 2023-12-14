@@ -22,6 +22,7 @@ $per_fat = $_POST['fat'];
 $per_nfe = $_POST['nfe'];
 $per_cli = $_POST['cli'];
 $nivel_mod = $per_admin.$per_demo.$per_fat.$per_nfe.$per_cli;
+
 //--------------------------------------------------------------------
 if($per_admin == '#ADMIN'){
     $aux_per_admin = 'S';
@@ -62,15 +63,20 @@ if($per_cli == '#CLIN'){
 if($per_cli == NULL){
     $aux_per_cli = 'N';
 }
+//--------------------------------------------------------------------
 
 switch($acao){
 	case "1":
             
-            $sql = ("INSERT INTO adeluc.tb_usuarios (nome, usuario, senha, email, ativo, datainclusao, descricaoobs, criadopor, nivel_mod, per_admin, per_demo, per_fat, per_nfe, per_cli) "
-                . "VALUES ('$descricao', '$usuario', sha1('$senha'), '$email', '$status', SYSDATE(),'$obs','$criadopor','$nivel_mod', '$aux_per_admin','$aux_per_demo' ,'$aux_per_fat', '$aux_per_nfe', '$aux_per_cli')");
+            $sql_usuario = ("INSERT INTO adeluc.tb_usuarios (nome, usuario, senha, email, ativo, datainclusao, descricaoobs, criadopor) "
+                . "VALUES ('$descricao', '$usuario', sha1('$senha'), '$email', '$status', SYSDATE(),'$obs','$criadopor')");
+            
+            $result = mysqli_query($con, $sql_usuario);
 		 
-
-		$result = mysqli_query($con, $sql);
+            $sql_modelo = ("INSERT INTO adeluc.tb_modelo_user (usuario_modelo, dinclusao_modelo, usuariocriacao, template, per_admin, per_demo, per_fat, per_nfe, per_cli) "
+                . "VALUES ('$usuario', SYSDATE(), '$criadopor','$nivel_mod', '$aux_per_admin','$aux_per_demo' ,'$aux_per_fat', '$aux_per_nfe', '$aux_per_cli')");
+            
+            $result2 = mysqli_query($con, $sql_modelo);
 
 		if(!$result) {
 			echo("Ocorreu um erro durante a inserção na tabela!");

@@ -343,7 +343,7 @@ require_once("../../../Connection/conexao.php");
                                             ini_set('default_charset', 'utf-8');
                                             require_once("../../../Connection/conexao.php");
 
-                                            $result_setor = "SELECT * FROM adeluc.tb_usuarios";
+                                            $result_setor = "SELECT * FROM adeluc.vw_usuarios";
                                             $resultado_setor = mysqli_query($con, $result_setor);
                                             while ($rows_setor = mysqli_fetch_array($resultado_setor)) {
                                                 
