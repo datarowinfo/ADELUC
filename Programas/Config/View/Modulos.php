@@ -81,7 +81,7 @@ require_once("../../../Connection/conexao.php");
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Cadastros:</h6>
-                            <a class="collapse-item active" href="setor.php">Cadastro e consulta</a>
+                            <a class="collapse-item active" href="usuario.php">Cadastro e consulta</a>
                             <a class="collapse-item" href="Modulos.php">Módulos</a>
                             <a class="collapse-item" href="Relatorios.php">Relatórios</a>
                         </div>

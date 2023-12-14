@@ -202,7 +202,7 @@ require_once("Connection/conexao.php");
             <hr class="sidebar-divider d-none d-md-block">
             
             <li class="nav-item">
-                <a tupe="button" class="nav-link collapsed" href="http://localhost/DTR-ADELUC/SUPORTE/" target="#">
+                <a tupe="button" class="nav-link collapsed" href="http://localhost/DTR-ADELUC/supports/" target="#">
                     
                     <button class="btn btn-primary">
                         <i class="fas fa-tags"></i>
