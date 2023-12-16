@@ -21,6 +21,9 @@ require_once("Connection/conexao.php");
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="vendor/fontawesome-free/css/fontawesome.min" rel="stylesheet" type="text/css">
+    <link href="vendor/fontawesome-free/css/brands.min" rel="stylesheet" type="text/css">
+    <link href="vendor/fontawesome-free/css/fontawesome.min" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
@@ -197,20 +200,29 @@ require_once("Connection/conexao.php");
                     </div>
                 </div>
             </li>
-
-            <!-- Divider -->
+            
+             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
             
-            <li class="nav-item">
-                <a tupe="button" class="nav-link collapsed" href="http://localhost/DTR-ADELUC/supports/" target="#">
-                    
-                    <button class="btn btn-primary">
-                        <i class="fas fa-tags"></i>
-                        <span>Sistema de chamados</span></button>
+            <div class="container">
+                <a type="button"  href="usuario.php" target="#">
+                    <button id="restrito" class="btn btn-secondary">
+                            <i class="fa fa-tags"></i>
+                            <span>Acesso restrito   </span></button>
                 </a>
-            </li>
+            </div>
             
-            <hr class="sidebar-divider d-none d-md-block">
+            <p>
+            <div class="container">
+                <a type="button"  href="http://localhost/DTR-ADELUC/supports/" target="#">
+                    
+                    <button id="chamados" class="btn btn-primary">
+                        <i class="fas fa-tags"></i>
+                        <span>Help |  Suporte   </span></button>
+                </a>
+            </div>
+            </p>
+                     
 
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">

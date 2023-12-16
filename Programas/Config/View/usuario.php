@@ -68,7 +68,7 @@ require_once("../../../Connection/conexao.php");
 
                 <!-- Heading -->
                 <div class="sidebar-heading">
-                    Estrutura de PCMSO
+                    Configurações e acessos
                 </div>
 
                 <!-- Nav Item - Pages Collapse Menu -->
@@ -80,10 +80,24 @@ require_once("../../../Connection/conexao.php");
                     </a>
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <h6 class="collapse-header">Cadastros:</h6>
-                            <a class="collapse-item active" href="setor.php">Cadastro e consulta</a>
-                            <a class="collapse-item" href="Modulos.php">Módulos</a>
+                            <h6 class="collapse-header">Gestão de acesso:</h6>
+                            <a class="collapse-item active" href="usuario.php">Cadastro de usuário</a>
+                            <a class="collapse-item" href="#">Log de acesso</a>
                             <a class="collapse-item" href="Relatorios.php">Relatórios</a>
+                        </div>
+                    </div>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseModulo"
+                       aria-expanded="true" aria-controls="collapseTwo">
+                        <i class="fas fa-fw fa-cog"></i>
+                        <span>Módulos</span>
+                    </a>
+                    <div id="collapseModulo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Módulos autorizados:</h6>
+                            <a class="collapse-item" href="Modulos.php">Gestão Módulos</a>
                         </div>
                     </div>
                 </li>
@@ -262,7 +276,7 @@ require_once("../../../Connection/conexao.php");
                                                                 </div
                                                             </td></tr>
                                                     <tr><td><input type="checkbox" id="admin" name="admin" value="#ADMIN"/> Administrador</td></tr>
-                                                    <tr><td><input type="checkbox" id="demo" name="demo" value="#DEMO"/> Demo</td></tr>
+                                                    <tr><td><input type="checkbox" id="demo" name="demo" value="#DEMO"/> Demonstração</td></tr>
                                                     <tr><td><input type="checkbox" id="fat" name="fat" value="#FAT"/> Faturamento</td></tr>
                                                     <tr><td><input type="checkbox" id="nfe" name="nfe" value="#NFE"/> Nota Fiscal</td></tr>
                                                     <tr><td><input type="checkbox" id="fisio" name="fisio" value="#FISIO"/> Fisio</td></tr>
@@ -275,7 +289,7 @@ require_once("../../../Connection/conexao.php");
                                                     <tr><td><input type="checkbox" id="ocupacional" name="ocup" value="#OCUP"/> Ocupacional</td></tr>
                                                     <tr><td><input type="checkbox" id="clinica" name="cli" value="#CLIN"/> Clinicas</td></tr>
                                                     <tr><td><input type="checkbox" id="desenv" name="desenv" value="#DESENV"/> Desenvolvedor</td></tr>
-                                                    <tr><td><input type="checkbox" id="atacarejo" name="atac" value="#ATAC"/> Atacarejo</td></tr>
+                                                    <tr><td><input type="checkbox" id="atacarejo" name="atac" value="#ATAC"/> Vendas</td></tr>
                                                 </table>
                                             </td>
                                             
@@ -329,7 +343,7 @@ require_once("../../../Connection/conexao.php");
                                                 <th>Ação</th>
                                                 <th>Usuário</th>
                                                 <th>Descrição</th>
-                                                 <th>Papel</th>
+                                                 <th>Template</th>
                                                 <th>Situação</th>
                                             </tr>
                                             

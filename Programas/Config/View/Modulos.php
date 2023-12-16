@@ -66,9 +66,9 @@ require_once("../../../Connection/conexao.php");
                 <!-- Divider -->
                 <hr class="sidebar-divider">
 
-                <!-- Heading -->
+                 <!-- Heading -->
                 <div class="sidebar-heading">
-                    Estrutura de PCMSO
+                    Configurações e acessos
                 </div>
 
                 <!-- Nav Item - Pages Collapse Menu -->
@@ -80,14 +80,27 @@ require_once("../../../Connection/conexao.php");
                     </a>
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <h6 class="collapse-header">Cadastros:</h6>
-                            <a class="collapse-item active" href="usuario.php">Cadastro e consulta</a>
-                            <a class="collapse-item" href="Modulos.php">Módulos</a>
+                            <h6 class="collapse-header">Gestão de acesso:</h6>
+                            <a class="collapse-item active" href="usuario.php">Cadastro de usuário</a>
+                            <a class="collapse-item" href="#">Log de acesso</a>
                             <a class="collapse-item" href="Relatorios.php">Relatórios</a>
                         </div>
                     </div>
                 </li>
-
+                
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseModulo"
+                       aria-expanded="true" aria-controls="collapseTwo">
+                        <i class="fas fa-fw fa-cog"></i>
+                        <span>Módulos</span>
+                    </a>
+                    <div id="collapseModulo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Módulos autorizados:</h6>
+                            <a class="collapse-item" href="Modulos.php">Gestão Módulos</a>
+                        </div>
+                    </div>
+                </li>
                 <!-- Divider -->
                 <hr class="sidebar-divider d-none d-md-block">
 
@@ -213,6 +226,7 @@ require_once("../../../Connection/conexao.php");
                            
                             <div class="card-body bg-gray-300">
                                 <div class="table-responsive bg-gray-300 text-dark">
+                                    <div class="card-shadow mb-0 bg-dark text-light"> <p class="font-weight-bold"> Módulos autorizados por usuário</p></div>
                                     <table class="table table-striped table-hover table-sm text-dark" id="dataTable" width="100%" cellspacing="0">
                                         <thead class="thead-dark" >
                                             <tr>
@@ -230,7 +244,7 @@ require_once("../../../Connection/conexao.php");
                                                 <th>Fisioterapia</th>
                                                 <th>Desenvolvedor</th>
                                                 <th>Ocupacional</th>
-                                                <th>Atacado</th>
+                                                <th>Vendas</th>
                                                 
                                             </tr>
                                             
@@ -274,15 +288,15 @@ require_once("../../../Connection/conexao.php");
                                                     <td><?php echo $status; ?></td>
                                                     <td><?php echo $rows_setor['inclusao']; ?></td>
                                                     <td><?php echo $rows_setor['por']; ?></td>
-                                                    <td class="text-primary font-weight-bold"><?php echo $rows_setor['administrador']; ?></td>
-                                                    <td class="text-primary font-weight-bold"><?php echo $rows_setor['demonstracao']; ?></td>
-                                                    <td class="text-primary font-weight-bold"><?php echo $rows_setor['faturamento']; ?></td>
-                                                    <td class="text-primary font-weight-bold"><?php echo $rows_setor['nota']; ?></td>
-                                                    <td class="text-primary font-weight-bold"><?php echo $rows_setor['clinicas']; ?></td>
-                                                    <td class="text-primary font-weight-bold"><?php echo $rows_setor['fisioterapia']; ?></td>
-                                                    <td class="text-primary font-weight-bold"><?php echo $rows_setor['desenvolvedor']; ?></td>
-                                                    <td class="text-primary font-weight-bold"><?php echo $rows_setor['ocupacional']; ?></td>
-                                                    <td class="text-primary font-weight-bold"><?php echo $rows_setor['atacado']; ?></td>
+                                                    <td class="text-dark font-weight-bold"><?php echo $rows_setor['administrador']; ?></td>
+                                                    <td class="text-dark font-weight-bold"><?php echo $rows_setor['demonstracao']; ?></td>
+                                                    <td class="text-dark font-weight-bold"><?php echo $rows_setor['faturamento']; ?></td>
+                                                    <td class="text-dark font-weight-bold"><?php echo $rows_setor['nota']; ?></td>
+                                                    <td class="text-dark font-weight-bold"><?php echo $rows_setor['clinicas']; ?></td>
+                                                    <td class="text-dark font-weight-bold"><?php echo $rows_setor['fisioterapia']; ?></td>
+                                                    <td class="text-dark font-weight-bold"><?php echo $rows_setor['desenvolvedor']; ?></td>
+                                                    <td class="text-dark font-weight-bold"><?php echo $rows_setor['ocupacional']; ?></td>
+                                                    <td class="text-dark font-weight-bold"><?php echo $rows_setor['vendas']; ?></td>
 
                                                 </tr>
                                                 <?php
