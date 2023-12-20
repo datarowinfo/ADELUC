@@ -197,6 +197,9 @@ require_once("Connection/conexao.php");
                         <a class="collapse-item" href="utilities-border.html">Exames complemntares</a>
                         <a class="collapse-item" href="utilities-animation.html">Animations</a>
                         <a class="collapse-item" href="utilities-other.html">Other</a>
+                        <a class="collapse-item" href="Programas/Restrito/View/Contrato_Cliente.php"></a>
+                        
+                        
                     </div>
                 </div>
             </li>
@@ -204,13 +207,23 @@ require_once("Connection/conexao.php");
              <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
             
-            <div class="container">
-                <a type="button"  href="usuario.php" target="#">
-                    <button id="restrito" class="btn btn-secondary">
-                            <i class="fa fa-tags"></i>
-                            <span>Acesso restrito   </span></button>
+            <!-- Nav Item - Fisioterapia Menu -->
+            <li class="nav-item bg-secondary">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#acessorestrito"
+                    aria-expanded="true" aria-controls="acessorestrito">
+                    <i style="margin-left:3px;" class="fas fa-ellipsis-h"></i>
+                    <span style="margin-left:5px;">Acesso restrito</span>
                 </a>
-            </div>
+                <div id="acessorestrito" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="Programas/Restrito/View/Contrato_Cliente.php">Contratos</a>
+                    </div>
+                </div>
+            </li>
+            
+             <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">       
             
             <p>
             <div class="container">
@@ -218,7 +231,7 @@ require_once("Connection/conexao.php");
                     
                     <button id="chamados" class="btn btn-primary">
                         <i class="fas fa-tags"></i>
-                        <span>Help |  Suporte   </span></button>
+                        <span>Help | Suporte</span></button>
                 </a>
             </div>
             </p>
