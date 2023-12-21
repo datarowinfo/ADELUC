@@ -52,6 +52,8 @@ if(!empty($_GET['id_hierarquia']))
 
         <!-- Custom styles for this page -->
         <link href="../../../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+        
+   
 
     </head>
 
@@ -284,8 +286,7 @@ if(!empty($_GET['id_hierarquia']))
                             </div>
                         </div>
                     </div>
-
-
+                     
                    <?php
                  
                 $result_usuarios = "SELECT * FROM adeluc.tb_hierarquia WHERE tipo = 'SET'";

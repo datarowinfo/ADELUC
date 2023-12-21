@@ -24,6 +24,7 @@
         <!-- Custom styles for this page -->
         <link href="../../../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
         <meta http-equiv="refresh" content="2; URL='http://localhost/DTR-ADELUC/Programas/Ocupacional/View/setor.php'"/>
+        
 
     </head>
 
@@ -247,9 +248,11 @@
                                     
                                     <hr class="sidebar-divider">
 
-                                    <div class="alert alert-success" role="alert">
+                                    <div id="alert" class="alert alert-success" role="alert">
                                         Cadastro editado com sucesso!
                                     </div>
+                                    
+                                  
                                 </form>
                                 </p>
 

@@ -199,166 +199,121 @@ session_start(); ?>
 
                     </nav>
                     <!-- End of Topbar -->
+                     <!-- End of Topbar -->
                     <div class="container-fluid bg-gray-400">
                         <div class="card shadow mb-4">
                             <div class="card-header py-3 bg-dark">
                                 <h6 class="m-0 font-weight-bold text-light">Cadastro de contrato</h6>
                             </div>
                             <div class="card-body bg-gray-300">
-                                <div class= "row">
+                                <p>
+                                <form class="bg-gray-300 text-dark" method="POST" action="../Services/Salvar_Setor.php">
+                                    <table>
+                                        <tr>
 
-                        
+                                            <td>
+                                                CNPJ: <input id="descricaosetor" type="text" class="form-control form-control-sm" name="descricao">
+                                            </td>
 
-                        <div class="col-lg-10">
+                                            <td>
+                                                Razão Social: <input id="caracterizacaosetor" type="text" class="form-control form-control-sm" name="caracterizacao">
+                                            </td>
 
+                                            <td>
+                                                Código indentificador: <input type="text" name="tipo" value = "SET" disabled class="form-control form-control-sm">
+                                            </td>
 
-                            <!-- Collapsable Card Example -->
-                            <div class="bg-dark card shadow mb-4">
-                                <!-- Card Header - Accordion -->
-                                <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse"
-                                    role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                                    <h6 class=" text-dark m-0 font-weight-bold text-primary">Autorizações do contrato</h6>
-                                </a>
-                                <!-- Card Content - Collapse -->
-                                <div class="collapse show" id="collapseCardExample">
-                                    <div class="card-body bg-gray-400">
+                                        </tr>
+
+                                        <tr>
+                                            <td colspan = "2">
+                                                <input style="margin-left: 10px" type="checkbox" name="status" value="1" checked required>Bloqueado
+                                            </td><!-- comment -->
+                                            <td>
+                                                <button id="SalvarCad" class="btn btn-secondary aling-right" name="Subject" value="1">
+                                                    <span id="iconCad" class="icon text-white-70 fas fa-save">
+                                                    </span>
+                                                    <span class="text">Salvar</span>
+                                                </button>
+
+                                                <button id="LimparCadSetor" class="btn btn-secondary aling-right" name="Subject" value="2">
+                                                    <span id="iconCad" class="icon text-white-70 fas fa-times">
+                                                    </span>
+                                                    <span class="text">Limpar</span>
+                                                </button>
+                                            </td>
+                                        </tr>
                                         
-                                            <?php
+                                        <tr><td colspan="3"></td></tr>
+                                        
+                                        <tr>
+                                            <td colspan = '3'>
+                                                <?php if(isset($_SESSION['msg'])){
+                                                        echo $_SESSION['msg'];
+                                                        unset($_SESSION['msg']);
+                                                }?>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </form>
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                   <?php
                  
-                                                $result_usuarios = "SELECT * FROM adeluc.tb_contrato";
-                                                $resultado_usuarios = mysqli_query($con, $result_usuarios);
-
-                                                echo"<div class='container-fluid bg-gray-400'>"
-                                                      ."<div class='card shadow mb-4' >"
-                                                        ."<div class='card-body bg-gray-300'>"
-                                                            ."<div class='table-responsive bg-gray-300 text-dark'>"
-                                                                ."<table class='table table-striped table-hover table-sm text-dark' id='dataTable' width='100%' cellspacing='0'>"
-                                                                    ."<thead class='thead-dark'>"
-                                                                    .     "<tr>"
-                                                                    .       "<th>Ação</th>"
-                                                                    .       "<th>Cód.Contrato</th>"
-                                                                    .       "<th>CNPJ</th>"
-                                                                    .       "<th>Razão Social</th>"
-                                                                    .       "<th>Bloqueado</th>"
-                                                                    .     "</tr>"
-                                                                    . "</thead>"
-                                                                    ."<tbody>";
-                                                    ini_set('default_charset', 'utf-8');
-                                                    while($row_usuario = mysqli_fetch_assoc($resultado_usuarios)){
-
-                                                          $auxStatus = $row_usuario['ativo'];
-
-                                                                                if ($auxStatus == 1) {
-                                                                                    $status = 'ATIVO';
-                                                                                } else {
-                                                                                    $status = 'DESATIVADO';
-                                                                                }
-
-                                                                    echo "<tr>"
-                                                                    .       "<td>"
-                                                                            . "<a class='btn btn-dark view_data text-white' href='Editar_Setor.php?id=" . $row_usuario['id_hierarquia'] . "'>
-                                                                                <svg class='bi d-block mx-auto mb-1' 
-                                                                                                 width='10' height='10' fill='currentColor'>
-                                                                                            <use xlink:href='../../../fonts/bootstrap-icons.svg#pencil-fill'/>
-                                                                                            </svg></a></td>"
-                                                                    .       "<td>".$row_usuario['id_hierarquia']."</td>"
-                                                                    .       "<td>".$row_usuario['descricao']."</td>"
-                                                                    .       "<td>".$row_usuario['caracterizacao']."</td>"
-                                                                    .       "<td>".$status."</td>"
-                                                                    . "</tr>";
-                                                    }
-                                                                echo"</tbody>"
-                                                                ."</table>"
-                                                             ."</div>"
-                                                          ."</div>"
-                                                        ."</div>"
-                                                    ."</div>"
-                                            ?>
-                                        
-                                        
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <!-- Begin Page Content -->
-                    <div class="container-fluid bg-gray-400">
-
-                        <!-- DataTales Example -->
-                        <div class="card shadow mb-4" >
-                            <div class="card-header py-3 bg-dark">
-                                <h6 class="m-0 font-weight-bold text-light bg-dark">Setores cadastrados</h6>
-                            </div>
-                            <div class="card-body bg-gray-300">
-                                <div class="table-responsive bg-gray-300">
-                                    <table class="table table-striped table-hover table-sm" id="dataTable" width="100%" cellspacing="0">
-                                        <thead class="thead-dark" >
-                                            <tr>
-                                                <th>Ação</th>
-                                                <th>Cód.Setor</th>
-                                                <th>Setor</th>
-                                                <th>Caracterização</th>
-                                                <th>Situação</th>
-                                            </tr>
-                                        </thead>
-
-                                        <tbody>
-
-                                            <?php
-                                            ini_set('default_charset', 'utf-8');
-                                            require_once("../../../Connection/conexao.php");
-
-                                            $result_setor = "SELECT * FROM adeluc.tb_hierarquia WHERE tipo = 'SET'";
-                                            $resultado_setor = mysqli_query($con, $result_setor);
-                                            while ($rows_setor = mysqli_fetch_array($resultado_setor)) {
-
-                                                $auxStatus = $rows_setor['ativo'];
-
+                $result_usuarios = "SELECT * FROM adeluc.tb_contrato";
+                $resultado_usuarios = mysqli_query($con, $result_usuarios);
+                    
+                echo"<div class='container-fluid bg-gray-400'>"
+                      ."<div class='card shadow mb-4' >"
+                        ."<div class='card-body bg-gray-300'>"
+                            ."<div class='table-responsive bg-gray-300 text-dark'>"
+                                ."<table class='table table-striped table-hover table-sm text-dark' id='dataTable' width='100%' cellspacing='0'>"
+                                    ."<thead class='thead-dark'>"
+                                    .     "<tr>"
+                                    .       "<th>Ação</th>"
+                                    .       "<th>Cód.Contrato</th>"
+                                    .       "<th>CNPJ</th>"
+                                    .       "<th>Razão Social</th>"
+                                    .       "<th>Bloqueado</th>"
+                                    .     "</tr>"
+                                    . "</thead>"
+                                    ."<tbody>";
+                    ini_set('default_charset', 'utf-8');
+                    while($row_usuario = mysqli_fetch_assoc($resultado_usuarios)){
+                        
+                          $auxStatus = $row_usuario['ativo'];
+                                                
                                                 if ($auxStatus == 1) {
                                                     $status = 'ATIVO';
                                                 } else {
                                                     $status = 'DESATIVADO';
                                                 }
-                                                ?>
 
-                                                <tr>
-                                                    <td>
-                                                        <button type="button" class="btn btn-dark view_data" 
-                                                                id="<?php echo $rows_setor['descricao']; ?>">
-                                                            <svg class="bi d-block mx-auto mb-1" 
-                                                                 width="10" height="10" fill="currentColor">
-                                                            <use xlink:href="../../../fonts/bootstrap-icons.svg#pencil-fill"/>
-                                                            </svg></button>
-                                                    </td>
-
-
-
-                                                    <td><?php echo $rows_setor['id_hierarquia']; ?></td>
-                                                    <td><?php echo $rows_setor['descricao']; ?></td>
-                                                    <td><?php echo $rows_setor['caracterizacao']; ?></td>
-                                                    <td><?php echo $status; ?></td>
-
-                                                </tr>
-                                                <?php
-                                            }
-                                            ?>
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <!-- /.container-fluid -->
+                                    echo "<tr>"
+                                    .       "<td>"
+                                            . "<a class='btn btn-dark view_data text-white' href='Editar_Setor.php?id=" . $row_usuario['id_hierarquia'] . "'>
+                                                <svg class='bi d-block mx-auto mb-1' 
+                                                                 width='10' height='10' fill='currentColor'>
+                                                            <use xlink:href='../../../fonts/bootstrap-icons.svg#pencil-fill'/>
+                                                            </svg></a></td>"
+                                    .       "<td>".$row_usuario['id_hierarquia']."</td>"
+                                    .       "<td>".$row_usuario['descricao']."</td>"
+                                    .       "<td>".$row_usuario['caracterizacao']."</td>"
+                                    .       "<td>".$status."</td>"
+                                    . "</tr>";
+                    }
+                                echo"</tbody>"
+                                ."</table>"
+                             ."</div>"
+                          ."</div>"
+                        ."</div>"
+                    ."</div>"
+		?>
 
                 </div>
                 <!-- End of Main Content -->
