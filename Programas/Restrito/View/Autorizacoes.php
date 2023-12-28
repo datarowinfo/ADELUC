@@ -1,6 +1,17 @@
 <?php
-include_once("../../../Connection/conexao.php");
-session_start(); ?>
+session_start();
+include_once("../../../connection/conexao.php");
+$id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+$result_usuario = "SELECT * FROM adeluc.tb_contrato WHERE id_contrato = '$id'";
+$resultado_usuario = mysqli_query($con, $result_usuario);
+$row_usuario = mysqli_fetch_assoc($resultado_usuario);
+    
+        $descricao = $row_usuario['CNPJ'];
+        $caracterizacao = $row_usuario['razao'];
+        $ativo = $row_usuario['cod_identificador'];
+        
+?>
+
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -40,7 +51,7 @@ session_start(); ?>
             <ul class="navbar-nav bg-dark sidebar sidebar-dark accordion" id="accordionSidebar">
 
                 <!-- Sidebar - Brand -->
-                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="app.php">
+                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../../../app.php">
                     <div class="sidebar-brand-icon rotate-n-20">
                         <i><img src="../../../Image/Logo.png"/></i>
                     </div>
@@ -52,7 +63,7 @@ session_start(); ?>
 
                 <!-- Nav Item - Dashboard -->
                 <li class="nav-item">
-                    <a class="nav-link" href="app.php">
+                    <a class="nav-link" href="../../../app.php">
                         <i class="fas fa-fw fa-tachometer-alt"></i>
                         <span>Inicio</span></a>
                 </li>
@@ -76,8 +87,8 @@ session_start(); ?>
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Contratos Cadastrados:</h6>
-                            <a class="collapse-item active" href="restrito.php">Contratos</a>
-                            <a class="collapse-item" href="Autorizacoes.php">Autorizações</a>
+                            <a class="collapse-item" href="Contrato_Cliente.php">Contratos</a>
+                            <a class="collapse-item active" href="Autorizacoes.php">Autorizações</a>
                             
                         </div>
                     </div>
@@ -175,9 +186,9 @@ session_start(); ?>
                             <li class="nav-item dropdown no-arrow">
                                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">LUCAS SOUZA</span>
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['UsuarioNome']; ?></span>
                                     <img class="img-profile rounded-circle"
-                                         src="img/undraw_profile.svg">
+                                         src="../../../img/undraw_profile.svg">
                                 </a>
                                 <!-- Dropdown - User Information -->
                                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -212,31 +223,67 @@ session_start(); ?>
                                         <tr>
 
                                             <td>
-                                                CNPJ: <input id="descricaosetor" type="text" class="form-control form-control-sm" name="descricao">
+                                                <input type="hidden" name="id_contrato" value="<?php echo $row_usuario['id_contrato']; ?>">
+                                                CNPJ: <input id="descricaosetor" type="text" class="form-control form-control-sm" name="cnpj" disabled>
                                             </td>
 
                                             <td>
-                                                Razão Social: <input id="caracterizacaosetor" type="text" class="form-control form-control-sm" name="caracterizacao">
+                                                Razão Social: <input id="caracterizacaosetor" type="text" class="form-control form-control-sm" name="razao" disabled>
+                                            </td>
+                                            
+                                            <td>
+                                                Unidade: <input type="text" name="unidade"  class="form-control form-control-sm" disabled>
                                             </td>
 
                                             <td>
-                                                Código indentificador: <input type="text" name="tipo" value = "SET" disabled class="form-control form-control-sm">
+                                                Código identificador: <input type="text" name="codidentificador"  disabled class="form-control form-control-sm" disabled>
                                             </td>
 
                                         </tr>
-
                                         <tr>
-                                            <td colspan = "2">
-                                                <input style="margin-left: 10px" type="checkbox" name="status" value="1" checked required>Bloqueado
-                                            </td><!-- comment -->
                                             <td>
-                                                <button id="SalvarCad" class="btn btn-secondary aling-right" name="Subject" value="1">
+                                                <input type="checkbox" name="ativo" value="S" disabled>Contrato ativo
+                                            </td><!-- comment -->
+                                        </tr>
+                                        
+                                        
+                                        <tr><td>
+                                                 <div class="bg-gray-300">
+                                                     <p><h6 class="m-0 font-weight-bold">Liberar Módulo:</h6></p>
+                                                 </div
+                                             </td></tr>
+                                        
+                                                    <tr><td><input type="checkbox" id="admin" name="admin" value="#ADMIN" disabled/> Administrador</td>
+                                                        <td><input type="checkbox" id="demo" name="demo" value="#DEMO" disabled/> Demonstração</td>
+                                                        <td><input type="checkbox" id="fat" name="fat" value="#FAT" disabled/> Faturamento</td>
+                                                        <td><input type="checkbox" id="nfe" name="nfe" value="#NFE" disabled/> Nota Fiscal</td>
+                                                    </tr>
+                                                    <tr><td><input type="checkbox" id="fisio" name="fisio" value="#FISIO" disabled/> Fisio</td>
+                                                        <td><input type="checkbox" id="ocupacional" name="ocup" value="#OCUP" disabled/> Ocupacional</td>
+                                                        <td><input type="checkbox" id="clinica" name="cli" value="#CLIN" disabled/> Clinicas</td>
+                                                        <td><input type="checkbox" id="desenv" name="desenv" value="#DESENV" disabled/> Desenvolvedor</td>
+                                                    </tr>
+                                                    <tr><td><input type="checkbox" id="atacarejo" name="atac" value="#ATAC" disabled/> Vendas</td></tr>
+                                                    
+                                                    <tr><td>
+                                                 <div class="bg-gray-300">
+                                                     <p><h6 class="m-0 font-weight-bold">Liberar usuário:</h6></p>
+                                                 </div
+                                             </td></tr>
+                                        
+                                                    <tr><td>Quantidade: <input type="text" name="simultaneo"  disabled class="form-control form-control-sm" placeholder="usuário simultâneo" disabled></td>
+                                                      </tr>
+                                        
+                                        <tr>
+                                            <td>
+                                                <br>
+                                                <button id="SalvarCad" class="btn btn-primary aling-right" name="Subject" value="1" disabled>
                                                     <span id="iconCad" class="icon text-white-70 fas fa-save">
                                                     </span>
                                                     <span class="text">Salvar</span>
                                                 </button>
 
-                                                <button id="LimparCadSetor" class="btn btn-secondary aling-right" name="Subject" value="2">
+                                                <button id="LimparCadSetor" class="btn btn-secondary aling-right" name="Subject" value="2" disabled>
                                                     <span id="iconCad" class="icon text-white-70 fas fa-times">
                                                     </span>
                                                     <span class="text">Limpar</span>
@@ -244,16 +291,17 @@ session_start(); ?>
                                             </td>
                                         </tr>
                                         
-                                        <tr><td colspan="3"></td></tr>
+                                        <tr><td></td></tr>
                                         
                                         <tr>
-                                            <td colspan = '3'>
+                                            <td colspan = '4'>
                                                 <?php if(isset($_SESSION['msg'])){
                                                         echo $_SESSION['msg'];
                                                         unset($_SESSION['msg']);
                                                 }?>
                                             </td>
                                         </tr>
+                                        
                                     </table>
                                 </form>
                                 </p>
@@ -276,10 +324,9 @@ session_start(); ?>
                                     ."<thead class='thead-dark'>"
                                     .     "<tr>"
                                     .       "<th>Ação</th>"
-                                    .       "<th>Cód.Contrato</th>"
-                                    .       "<th>CNPJ</th>"
+                                    .       "<th>Cód.Identificador</th>"
                                     .       "<th>Razão Social</th>"
-                                    .       "<th>Bloqueado</th>"
+                                    .       "<th>Ativo</th>"
                                     .     "</tr>"
                                     . "</thead>"
                                     ."<tbody>";
@@ -288,22 +335,21 @@ session_start(); ?>
                         
                           $auxStatus = $row_usuario['ativo'];
                                                 
-                                                if ($auxStatus == 1) {
+                                                if ($auxStatus == 'S') {
                                                     $status = 'ATIVO';
                                                 } else {
-                                                    $status = 'DESATIVADO';
+                                                    $status = 'INATIVO';
                                                 }
 
                                     echo "<tr>"
                                     .       "<td>"
-                                            . "<a class='btn btn-dark view_data text-white' href='Editar_Setor.php?id=" . $row_usuario['id_hierarquia'] . "'>
+                                            . "<a class='btn btn-dark view_data text-white' href='Editar_Setor.php?id=" . $row_usuario['id_contrato'] . "'>
                                                 <svg class='bi d-block mx-auto mb-1' 
                                                                  width='10' height='10' fill='currentColor'>
                                                             <use xlink:href='../../../fonts/bootstrap-icons.svg#pencil-fill'/>
                                                             </svg></a></td>"
-                                    .       "<td>".$row_usuario['id_hierarquia']."</td>"
-                                    .       "<td>".$row_usuario['descricao']."</td>"
-                                    .       "<td>".$row_usuario['caracterizacao']."</td>"
+                                    .       "<td>".$row_usuario['cod_identificador']."</td>"
+                                    .       "<td>".$row_usuario['razao']."</td>"
                                     .       "<td>".$status."</td>"
                                     . "</tr>";
                     }

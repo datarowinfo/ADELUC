@@ -99,7 +99,7 @@ if(!empty($_GET['id_hierarquia']))
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Contratos Cadastrados:</h6>
-                            <a class="collapse-item active" href="restrito.php">Contratos</a>
+                            <a class="collapse-item active" href="Contrato_Cliente.php">Contratos</a>
                             <a class="collapse-item" href="Autorizacoes.php">Autorizações</a>
                             
                         </div>
@@ -230,30 +230,37 @@ if(!empty($_GET['id_hierarquia']))
                             </div>
                             <div class="card-body bg-gray-300">
                                 <p>
-                                <form class="bg-gray-300 text-dark" method="POST" action="../Services/Salvar_Setor.php">
+                                <form class="bg-gray-300 text-dark" method="POST" action="../Services/Salvar_Contrato.php">
                                     <table>
                                         <tr>
 
                                             <td>
-                                                CNPJ: <input id="descricaosetor" type="text" class="form-control form-control-sm" name="descricao">
+                                                CNPJ: <input id="descricaosetor" type="text" class="form-control form-control-sm" name="cnpj">
                                             </td>
 
                                             <td>
-                                                Razão Social: <input id="caracterizacaosetor" type="text" class="form-control form-control-sm" name="caracterizacao">
+                                                Razão Social: <input id="caracterizacaosetor" type="text" class="form-control form-control-sm" name="razao">
+                                            </td>
+                                            
+                                            <td>
+                                                Unidade: <input type="text" name="unidade"  class="form-control form-control-sm">
                                             </td>
 
                                             <td>
-                                                Código indentificador: <input type="text" name="tipo" value = "SET" disabled class="form-control form-control-sm">
+                                                Código identificador: <input type="text" name="codidentificador"  disabled class="form-control form-control-sm">
                                             </td>
 
                                         </tr>
 
                                         <tr>
-                                            <td colspan = "2">
-                                                <input style="margin-left: 10px" type="checkbox" name="status" value="1" checked required>Bloqueado
-                                            </td><!-- comment -->
                                             <td>
-                                                <button id="SalvarCad" class="btn btn-secondary aling-right" name="Subject" value="1">
+                                                <input style="margin-left: 10px" type="checkbox" name="ativo" value="S" checked>Contrato ativo
+                                            </td><!-- comment -->
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <br>
+                                                <button id="SalvarCad" class="btn btn-primary aling-right" name="Subject" value="1">
                                                     <span id="iconCad" class="icon text-white-70 fas fa-save">
                                                     </span>
                                                     <span class="text">Salvar</span>
@@ -267,16 +274,17 @@ if(!empty($_GET['id_hierarquia']))
                                             </td>
                                         </tr>
                                         
-                                        <tr><td colspan="3"></td></tr>
+                                        <tr><td></td></tr>
                                         
                                         <tr>
-                                            <td colspan = '3'>
+                                            <td colspan = '4'>
                                                 <?php if(isset($_SESSION['msg'])){
                                                         echo $_SESSION['msg'];
                                                         unset($_SESSION['msg']);
                                                 }?>
                                             </td>
                                         </tr>
+                                        
                                     </table>
                                 </form>
                                 </p>
@@ -299,10 +307,9 @@ if(!empty($_GET['id_hierarquia']))
                                     ."<thead class='thead-dark'>"
                                     .     "<tr>"
                                     .       "<th>Ação</th>"
-                                    .       "<th>Cód.Contrato</th>"
-                                    .       "<th>CNPJ</th>"
+                                    .       "<th>Cód.Identificador</th>"
                                     .       "<th>Razão Social</th>"
-                                    .       "<th>Bloqueado</th>"
+                                    .       "<th>Ativo</th>"
                                     .     "</tr>"
                                     . "</thead>"
                                     ."<tbody>";
@@ -311,22 +318,21 @@ if(!empty($_GET['id_hierarquia']))
                         
                           $auxStatus = $row_usuario['ativo'];
                                                 
-                                                if ($auxStatus == 1) {
+                                                if ($auxStatus == 'S') {
                                                     $status = 'ATIVO';
                                                 } else {
-                                                    $status = 'DESATIVADO';
+                                                    $status = 'INATIVO';
                                                 }
 
                                     echo "<tr>"
                                     .       "<td>"
-                                            . "<a class='btn btn-dark view_data text-white' href='Editar_Setor.php?id=" . $row_usuario['id_hierarquia'] . "'>
+                                            . "<a class='btn btn-dark view_data text-white' href='Editar_Setor.php?id=" . $row_usuario['id_contrato'] . "'>
                                                 <svg class='bi d-block mx-auto mb-1' 
                                                                  width='10' height='10' fill='currentColor'>
                                                             <use xlink:href='../../../fonts/bootstrap-icons.svg#pencil-fill'/>
                                                             </svg></a></td>"
-                                    .       "<td>".$row_usuario['id_hierarquia']."</td>"
-                                    .       "<td>".$row_usuario['descricao']."</td>"
-                                    .       "<td>".$row_usuario['caracterizacao']."</td>"
+                                    .       "<td>".$row_usuario['cod_identificador']."</td>"
+                                    .       "<td>".$row_usuario['razao']."</td>"
                                     .       "<td>".$status."</td>"
                                     . "</tr>";
                     }

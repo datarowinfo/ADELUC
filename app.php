@@ -111,7 +111,7 @@ require_once("Connection/conexao.php");
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i style="margin-left:2px;" class="fas fa-shopping-cart"></i>
-                    <span>Atacado e Varejo</span>
+                    <span>Vendas</span>
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
@@ -157,8 +157,6 @@ require_once("Connection/conexao.php");
                         <h6 class="collapse-header">Faturamento</h6>
                         <a class="collapse-item" href="utilities-color.html">Avaliação Cardiorespiratória</a>
                         <a class="collapse-item" href="utilities-border.html">Exames complementares</a>
-                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
                     </div>
                 </div>
             </li>
@@ -175,10 +173,7 @@ require_once("Connection/conexao.php");
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Fisioterapia:</h6>
                         <a class="collapse-item" href="utilities-color.html">Avaliação Cardiorespiratória</a>
-                        <a class="collapse-item" href="utilities-border.html">Exames complemntares</a>
-                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
-                    </div>
+                        <a class="collapse-item" href="utilities-border.html">Exames complementares</a>
                 </div>
             </li>
             
@@ -195,8 +190,6 @@ require_once("Connection/conexao.php");
                         <h6 class="collapse-header">Fisioterapia:</h6>
                         <a class="collapse-item" href="utilities-color.html">Avaliação Cardiorespiratória</a>
                         <a class="collapse-item" href="utilities-border.html">Exames complemntares</a>
-                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
                         <a class="collapse-item" href="Programas/Restrito/View/Contrato_Cliente.php"></a>
                         
                         
