@@ -1,7 +1,17 @@
 <?php
 session_start();
 include_once("../../../connection/conexao.php");
+$id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+$result_usuario = "SELECT * FROM adeluc.tb_contrato WHERE id_contrato = '$id'";
+$resultado_usuario = mysqli_query($con, $result_usuario);
+$row_usuario = mysqli_fetch_assoc($resultado_usuario);
+    
+        $descricao = $row_usuario['CNPJ'];
+        $caracterizacao = $row_usuario['razao'];
+        $ativo = $row_usuario['cod_identificador'];
+        
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -17,8 +27,6 @@ include_once("../../../connection/conexao.php");
 
         <!-- Custom fonts for this template -->
         <link href="../../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-        <link href="../../../fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
-       
         <link
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
             rel="stylesheet">
@@ -205,7 +213,7 @@ include_once("../../../connection/conexao.php");
                     <div class="container-fluid bg-gray-400">
                         <div class="card shadow mb-4">
                             <div class="card-header py-3 bg-dark">
-                                <h6 class="m-0 font-weight-bold text-light">Cadastro de contrato</h6>
+                                <h6 class="m-0 font-weight-bold text-light">Autorizar módulos no contrato</h6>
                             </div>
                             <div class="card-body bg-gray-300">
                                 <p>
@@ -214,6 +222,7 @@ include_once("../../../connection/conexao.php");
                                         <tr>
 
                                             <td>
+                                                <input type="hidden" name="id_contrato" value="<?php echo $row_usuario['id_contrato']; ?>">
                                                 CNPJ: <input id="descricaosetor" type="text" class="form-control form-control-sm" name="cnpj" disabled>
                                             </td>
 
@@ -243,18 +252,17 @@ include_once("../../../connection/conexao.php");
                                                  </div
                                              </td></tr>
                                         
-                                                    <tr><td><input type="checkbox" id="desenv" name="desenv" value="#DESENV" disabled/> Desenvolvedor</td>
-                                                        <td><input type="checkbox" id="fisio" name="fisio" value="#FISIO" disabled/> Fisio</td>
-                                                        <td><input type="checkbox" id="ocupacional" name="ocup" value="#OCUP" disabled/> Ocupacional</td>
+                                                    <tr><td><input type="checkbox" id="admin" name="admin" value="#ADMIN" disabled/> Administrador</td>
+                                                        <td><input type="checkbox" id="demo" name="demo" value="#DEMO" disabled/> Demonstração</td>
+                                                        <td><input type="checkbox" id="fat" name="fat" value="#FAT" disabled/> Faturamento</td>
                                                         <td><input type="checkbox" id="nfe" name="nfe" value="#NFE" disabled/> Nota Fiscal</td>
                                                     </tr>
-                                                    <tr>
-                                                        <td><input type="checkbox" id="fat" name="fat" value="#FAT" disabled/> Faturamento</td>
-                                                        <td><input type="checkbox" id="atacarejo" name="atac" value="#ATAC" disabled/> Vendas</td>
+                                                    <tr><td><input type="checkbox" id="fisio" name="fisio" value="#FISIO" disabled/> Fisio</td>
+                                                        <td><input type="checkbox" id="ocupacional" name="ocup" value="#OCUP" disabled/> Ocupacional</td>
                                                         <td><input type="checkbox" id="clinica" name="cli" value="#CLIN" disabled/> Clinicas</td>
-                                                        
+                                                        <td><input type="checkbox" id="desenv" name="desenv" value="#DESENV" disabled/> Desenvolvedor</td>
                                                     </tr>
-                                                  
+                                                    <tr><td><input type="checkbox" id="atacarejo" name="atac" value="#ATAC" disabled/> Vendas</td></tr>
                                                     
                                                     <tr><td>
                                                  <div class="bg-gray-300">
@@ -271,7 +279,7 @@ include_once("../../../connection/conexao.php");
                                                 <button id="SalvarCad" class="btn btn-primary aling-right" name="Subject" value="1" disabled>
                                                     <span id="iconCad" class="icon text-white-70 fas fa-save">
                                                     </span>
-                                                    <span class="text">Salvar</span>
+                                                    <span class="text">Autorizar</span>
                                                 </button>
 
                                                 <button id="LimparCadSetor" class="btn btn-secondary aling-right" name="Subject" value="2" disabled>
@@ -334,8 +342,11 @@ include_once("../../../connection/conexao.php");
 
                                     echo "<tr>"
                                     .       "<td>"
-                                            . "<a class='btn btn-dark view_data text-white' href='Autorizar.php?id=" . $row_usuario['id_contrato'] . "'>
-                                             <span class='icon text-white-70 fa fa-buysellads'></span></a></td>"
+                                            . "<a class='btn btn-dark view_data text-white' href='Editar_Setor.php?id=" . $row_usuario['id_contrato'] . "'>
+                                                <svg class='bi d-block mx-auto mb-1' 
+                                                                 width='10' height='10' fill='currentColor'>
+                                                            <use xlink:href='../../../fonts/bootstrap-icons.svg#pencil-fill'/>
+                                                            </svg></a></td>"
                                     .       "<td>".$row_usuario['cod_identificador']."</td>"
                                     .       "<td>".$row_usuario['razao']."</td>"
                                     .       "<td>".$status."</td>"

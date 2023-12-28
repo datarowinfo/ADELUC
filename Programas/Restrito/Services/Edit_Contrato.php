@@ -10,19 +10,13 @@ $ativo = $_POST['ativo'];
 $criado = $_SESSION['UsuarioNome'];
 $codidentificador = $cnpj."_".$unidade;
 $acao = $_POST['Subject'];
-$status = "A";
 
 switch($acao){
 	case "1":
 		$sql = ("INSERT INTO ADELUC.tb_contrato (CNPJ, razao, cod_identificador, ativo, usuario_criacao, data_inclusao, unidade) "
                 . "VALUES ('$cnpj', '$razao','$codidentificador','$ativo','$criado', SYSDATE(),'$unidade')");
                 
-                $result = mysqli_query($con, $sql);
-            
-                $sql2 = ("INSERT INTO ADELUC.tb_autorizacao (cod_autorizador, status, usuario_criacao, data_inclusao) "
-                . "VALUES ('$codidentificador', '$status','$criado', SYSDATE())");
-                
-		$result2 = mysqli_query($con, $sql2);
+		$result = mysqli_query($con, $sql);
 
 		if(!$result) {
 			echo("Ocorreu um erro durante a inserção na tabela!");
