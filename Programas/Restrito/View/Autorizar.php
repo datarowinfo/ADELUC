@@ -6,9 +6,11 @@ $result_usuario = "SELECT * FROM adeluc.tb_contrato WHERE id_contrato = '$id'";
 $resultado_usuario = mysqli_query($con, $result_usuario);
 $row_usuario = mysqli_fetch_assoc($resultado_usuario);
     
-        $descricao = $row_usuario['CNPJ'];
-        $caracterizacao = $row_usuario['razao'];
-        $ativo = $row_usuario['cod_identificador'];
+        $cnpj = $row_usuario['CNPJ'];
+        $razao = $row_usuario['razao'];
+        $unidade = $row_usuario['unidade'];
+        $codidentificador = $row_usuario['cod_identificador'];
+        $ativo = $row_usuario['ativo'];
         
 ?>
 
@@ -223,46 +225,71 @@ $row_usuario = mysqli_fetch_assoc($resultado_usuario);
 
                                             <td>
                                                 <input type="hidden" name="id_contrato" value="<?php echo $row_usuario['id_contrato']; ?>">
-                                                CNPJ: <input id="descricaosetor" type="text" class="form-control form-control-sm" name="cnpj" disabled>
+                                                CNPJ: <input id="descricaosetor" type="text" class="form-control form-control-sm" name="cnpj" value="<?php echo $cnpj; ?>" disabled>
                                             </td>
 
                                             <td>
-                                                Razão Social: <input id="caracterizacaosetor" type="text" class="form-control form-control-sm" name="razao" disabled>
+                                                Razão Social: <input id="caracterizacaosetor" type="text" class="form-control form-control-sm" name="razao" value="<?php echo $razao; ?>" disabled>
                                             </td>
                                             
                                             <td>
-                                                Unidade: <input type="text" name="unidade"  class="form-control form-control-sm" disabled>
+                                                Unidade: <input type="text" name="unidade"  class="form-control form-control-sm" value="<?php echo $unidade; ?>" disabled>
                                             </td>
 
                                             <td>
-                                                Código identificador: <input type="text" name="codidentificador"  disabled class="form-control form-control-sm" disabled>
+                                                Código identificador: <input type="text" name="codidentificador" class="form-control form-control-sm"  value="<?php echo $codidentificador; ?>" disabled>
                                             </td>
 
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="checkbox" name="ativo" value="S" disabled>Contrato ativo
+                                                <input style="margin-left: 10px" type="radio" name="status" value="S" <?php echo ($row_usuario['ativo'] == "S") ? 'checked' : null; ?>>Ativo
+                                                <input style="margin-left: 10px" type="radio" name="status" value="N" <?php echo ($row_usuario['ativo'] == "N") ? 'checked' : null; ?>>Bloqueado
                                             </td><!-- comment -->
                                         </tr>
                                         
                                         
                                         <tr><td>
                                                  <div class="bg-gray-300">
-                                                     <p><h6 class="m-0 font-weight-bold">Liberar Módulo:</h6></p>
+                                                     <p><h6 class="m-0 font-weight-bold">Autorizar módulos de sistema:</h6></p>
                                                  </div
                                              </td></tr>
                                         
-                                                    <tr><td><input type="checkbox" id="admin" name="admin" value="#ADMIN" disabled/> Administrador</td>
-                                                        <td><input type="checkbox" id="demo" name="demo" value="#DEMO" disabled/> Demonstração</td>
-                                                        <td><input type="checkbox" id="fat" name="fat" value="#FAT" disabled/> Faturamento</td>
-                                                        <td><input type="checkbox" id="nfe" name="nfe" value="#NFE" disabled/> Nota Fiscal</td>
-                                                    </tr>
-                                                    <tr><td><input type="checkbox" id="fisio" name="fisio" value="#FISIO" disabled/> Fisio</td>
-                                                        <td><input type="checkbox" id="ocupacional" name="ocup" value="#OCUP" disabled/> Ocupacional</td>
-                                                        <td><input type="checkbox" id="clinica" name="cli" value="#CLIN" disabled/> Clinicas</td>
-                                                        <td><input type="checkbox" id="desenv" name="desenv" value="#DESENV" disabled/> Desenvolvedor</td>
-                                                    </tr>
-                                                    <tr><td><input type="checkbox" id="atacarejo" name="atac" value="#ATAC" disabled/> Vendas</td></tr>
+                                                    <tr>
+                                                    <td> Desenvolvedor: </td>
+                                                    <td><input type="radio" name="status" value="#DESENV" disabled> Sim
+                                                        <input type="radio" name="status" value="N" disabled> Não
+                                                    </td></tr>
+                                                    <tr>
+                                                    <td> Fisioterapia: </td>
+                                                    <td><input type="radio" name="status" value="#FISIO" disabled> Sim
+                                                        <input type="radio" name="status" value="N" disabled> Não</td>
+                                                    </td></tr>
+                                                    <tr>
+                                                    <td> Ocupacional: </td>
+                                                    <td><input type="radio" name="status" value="#OCUP" disabled> Sim
+                                                        <input type="radio" name="status" value="N" disabled> Não
+                                                    </td></tr>
+                                                    <tr>
+                                                    <td> Clinicas: </td>
+                                                    <td><input type="radio" name="status" value="#CLIN" disabled> Sim
+                                                        <input type="radio" name="status" value="N" disabled> Não
+                                                    </td></tr>
+                                                    <tr>
+                                                    <td> Faturamento: </td>
+                                                    <td><input type="radio" name="status" value="#FAT" disabled> Sim
+                                                        <input type="radio" name="status" value="N" disabled> Não
+                                                    </td></tr>
+                                                    <tr>
+                                                    <td> Notas Fiscal: </td>
+                                                    <td><input type="radio" name="status" value="#NFE" disabled> Sim
+                                                        <input type="radio" name="status" value="N" disabled> Não
+                                                    </td></tr>
+                                                          <tr>
+                                                    <td> Vendas: </td>
+                                                    <td><input type="radio" name="status" value="#VENDA" disabled> Sim
+                                                        <input type="radio" name="status" value="N" disabled> Não
+                                                    </td></tr>
                                                     
                                                     <tr><td>
                                                  <div class="bg-gray-300">

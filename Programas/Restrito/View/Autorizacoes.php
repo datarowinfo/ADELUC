@@ -232,30 +232,54 @@ include_once("../../../connection/conexao.php");
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="checkbox" name="ativo" value="S" disabled>Contrato ativo
+                                                <input style="margin-left: 10px" type="radio" name="status" value="S" disabled>Ativo
+                                                <input style="margin-left: 10px" type="radio" name="status" value="N" disabled>Bloqueado
                                             </td><!-- comment -->
                                         </tr>
                                         
                                         
                                         <tr><td>
                                                  <div class="bg-gray-300">
-                                                     <p><h6 class="m-0 font-weight-bold">Liberar Módulo:</h6></p>
+                                                     <p><h6 class="m-0 font-weight-bold">Autorizar módulos de sistema:</h6></p>
                                                  </div
                                              </td></tr>
                                         
-                                                    <tr><td><input type="checkbox" id="desenv" name="desenv" value="#DESENV" disabled/> Desenvolvedor</td>
-                                                        <td><input type="checkbox" id="fisio" name="fisio" value="#FISIO" disabled/> Fisio</td>
-                                                        <td><input type="checkbox" id="ocupacional" name="ocup" value="#OCUP" disabled/> Ocupacional</td>
-                                                        <td><input type="checkbox" id="nfe" name="nfe" value="#NFE" disabled/> Nota Fiscal</td>
-                                                    </tr>
                                                     <tr>
-                                                        <td><input type="checkbox" id="fat" name="fat" value="#FAT" disabled/> Faturamento</td>
-                                                        <td><input type="checkbox" id="atacarejo" name="atac" value="#ATAC" disabled/> Vendas</td>
-                                                        <td><input type="checkbox" id="clinica" name="cli" value="#CLIN" disabled/> Clinicas</td>
-                                                        
-                                                    </tr>
-                                                  
-                                                    
+                                                    <td> Desenvolvedor: </td>
+                                                    <td><input type="radio" name="status" value="#DESENV" disabled> Sim
+                                                        <input type="radio" name="status" value="N" disabled> Não
+                                                    </td></tr>
+                                                    <tr>
+                                                    <td> Fisioterapia: </td>
+                                                    <td><input type="radio" name="status" value="#FISIO" disabled> Sim
+                                                        <input type="radio" name="status" value="N" disabled> Não</td>
+                                                    </td></tr>
+                                                    <tr>
+                                                    <td> Ocupacional: </td>
+                                                    <td><input type="radio" name="status" value="#OCUP" disabled> Sim
+                                                        <input type="radio" name="status" value="N" disabled> Não
+                                                    </td></tr>
+                                                    <tr>
+                                                    <td> Clinicas: </td>
+                                                    <td><input type="radio" name="status" value="#CLIN" disabled> Sim
+                                                        <input type="radio" name="status" value="N" disabled> Não
+                                                    </td></tr>
+                                                    <tr>
+                                                    <td> Faturamento: </td>
+                                                    <td><input type="radio" name="status" value="#FAT" disabled> Sim
+                                                        <input type="radio" name="status" value="N" disabled> Não
+                                                    </td></tr>
+                                                    <tr>
+                                                    <td> Notas Fiscal: </td>
+                                                    <td><input type="radio" name="status" value="#NFE" disabled> Sim
+                                                        <input type="radio" name="status" value="N" disabled> Não
+                                                    </td></tr>
+                                                          <tr>
+                                                    <td> Vendas: </td>
+                                                    <td><input type="radio" name="status" value="#VENDA" disabled> Sim
+                                                        <input type="radio" name="status" value="N" disabled> Não
+                                                    </td></tr>
+                                    
                                                     <tr><td>
                                                  <div class="bg-gray-300">
                                                      <p><h6 class="m-0 font-weight-bold">Liberar usuário:</h6></p>
