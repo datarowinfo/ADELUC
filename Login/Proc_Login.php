@@ -44,7 +44,7 @@ require_once("../Connection/conexao.php");
             $result2 = mysqli_query($con, $sql_sessao);
         
         
-    header('Location: ../app.php');
+    header('Location: ../processamento.php');
     }
    
     else{
